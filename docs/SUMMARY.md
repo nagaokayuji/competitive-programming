@@ -1,6 +1,8 @@
 # Summary
 - [index](./index.md)
 
+- [tips](./tips/index.md)
+
 - [データ構造](./data_structures/index.md)
   - [DSU](./data_structures/dsu.md)
   - [Priority Queue](./data_structures/priority_queue.md)
@@ -9,8 +11,6 @@
 - [アルゴリズム](./algorithms/index.md)
   - [Z-Algorithm](./algorithms/z_algorithm.md)
   - [素数](./algorithms/prime_numbers.md)
-
-- [tips](./tips/index.md)
 
 - [典型問題](./typical/index.md)
   - [LIS](./typical/lis.md)
