@@ -1,5 +1,7 @@
 # tips
 
+Python 特有の tips
+
 ## 入力を高速に受け取る
 `input()` で遅い場合は以下を検討
 
@@ -73,4 +75,18 @@ DFS などをするときは以下を追加
 ```python
 import sys
 sys.setrecursionlimit(10**8)
+```
+
+## リストの代わりに dict を使う
+
+3重配列などを宣言するのは面倒なため、
+特に defaultdict と組み合わせると実装が楽になる。
+
+Python では tuple をキーに取れることを利用して以下のように書ける。
+
+```python
+from collections import defaultdict
+
+dp = defaultdict(int)
+dp[0,0,0] = 1
 ```
