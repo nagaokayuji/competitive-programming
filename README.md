@@ -1,2 +1,3 @@
 # python-competitive-programming
-reference
+
+Python で競プロやるためのメモ

@@ -4,3 +4,8 @@ language = "ja"
 multilingual = false
 src = "docs"
 title = "python-competitive-programming"
+
+[preprocessor.katex]
+
+[output.html]
+no-section-label = true
