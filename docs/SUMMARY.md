@@ -8,3 +8,4 @@
 
 - [アルゴリズム](./algorithms/index.md)
   - [Z-Algorithm](./algorithms/z_algorithm.md)
+  - [素数](./algorithms/prime_numbers.md)
