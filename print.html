@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">index</a></li><li class="chapter-item expanded "><a href="data_structures/index.html">データ構造</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="data_structures/dsu.html">DSU</a></li><li class="chapter-item expanded "><a href="data_structures/priority_queue.html">Priority Queue</a></li><li class="chapter-item expanded "><a href="data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li></ol></li><li class="chapter-item expanded "><a href="algorithms/index.html">アルゴリズム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algorithms/z_algorithm.html">Z-Algorithm</a></li><li class="chapter-item expanded "><a href="algorithms/prime_numbers.html">素数</a></li></ol></li><li class="chapter-item expanded "><a href="tips/index.html">tips</a></li><li class="chapter-item expanded "><a href="typical/index.html">典型問題</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="typical/lis.html">LIS</a></li><li class="chapter-item expanded "><a href="typical/inversions.html">転倒数</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">index</a></li><li class="chapter-item expanded "><a href="tips/index.html">tips</a></li><li class="chapter-item expanded "><a href="data_structures/index.html">データ構造</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="data_structures/dsu.html">DSU</a></li><li class="chapter-item expanded "><a href="data_structures/priority_queue.html">Priority Queue</a></li><li class="chapter-item expanded "><a href="data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li></ol></li><li class="chapter-item expanded "><a href="algorithms/index.html">アルゴリズム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algorithms/z_algorithm.html">Z-Algorithm</a></li><li class="chapter-item expanded "><a href="algorithms/prime_numbers.html">素数</a></li></ol></li><li class="chapter-item expanded "><a href="typical/index.html">典型問題</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="typical/lis.html">LIS</a></li><li class="chapter-item expanded "><a href="typical/inversions.html">転倒数</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -148,6 +148,56 @@
 <h1 id="index"><a class="header" href="#index">index</a></h1>
 <p>競技プログラミングでのアルゴリズムやスニペット的なものをまとめていく。言語は Python3 のみの予定。</p>
 <p>コピペで使用できるようなものを目指す。</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="tips"><a class="header" href="#tips">tips</a></h1>
+<h2 id="入力を高速に受け取る"><a class="header" href="#入力を高速に受け取る">入力を高速に受け取る</a></h2>
+<p><code>input()</code> で遅い場合は以下を検討</p>
+<pre><code class="language-python">import sys
+stdin = sys.stdin
+ 
+rd = lambda: stdin.readline().strip()
+ri = lambda: int(ns())
+ril = lambda: list(map(int, stdin.readline().split()))
+</code></pre>
+<h2 id="print-関数を何度も呼ばない"><a class="header" href="#print-関数を何度も呼ばない">print() 関数を何度も呼ばない</a></h2>
+<p>以下は遅い</p>
+<pre><code class="language-python">for i in range(n):
+    print(solve(i))
+</code></pre>
+<p>例えば、以下のようにするとマシになる。</p>
+<pre><code class="language-python">ans = []
+for i in range(n):
+    ans.append(sole(i))
+
+print(*ans)
+</code></pre>
+<h2 id="defaultdict-を使うと便利"><a class="header" href="#defaultdict-を使うと便利">defaultdict を使うと便利</a></h2>
+<p>デフォルト値を指定できる。</p>
+<pre><code class="language-python">from collections import defaultdict
+
+dct = defaultdict(int)
+
+for x in arr:
+    dct[x] += 1
+</code></pre>
+<p><code>list</code> の場合</p>
+<pre><code class="language-python">dct = defaultdict(list)
+for x,y in arr:
+    dct[x].append(y)
+</code></pre>
+<p>初期値を変えたい場合</p>
+<pre><code class="language-python">dct = defaultdict(lambda: 10)
+</code></pre>
+<h2 id="deque-を使う"><a class="header" href="#deque-を使う">deque を使う</a></h2>
+<p><code>deque</code> を使うと高機能。
+スタック/キューとして使える。</p>
+<pre><code class="language-python">from collections import deque
+</code></pre>
+<h2 id="再帰を深くする"><a class="header" href="#再帰を深くする">再帰を深くする</a></h2>
+<p>DFS などをするときは以下を追加</p>
+<pre><code class="language-python">import sys
+sys.setrecursionlimit(10**8)
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="データ構造"><a class="header" href="#データ構造">データ構造</a></h1>
 <ul>
@@ -539,56 +589,6 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
             factors.append(factor)
         return factors
 
-</code></pre>
-<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="tips"><a class="header" href="#tips">tips</a></h1>
-<h2 id="入力を高速に受け取る"><a class="header" href="#入力を高速に受け取る">入力を高速に受け取る</a></h2>
-<p><code>input()</code> で遅い場合は以下を検討</p>
-<pre><code class="language-python">import sys
-stdin = sys.stdin
- 
-rd = lambda: stdin.readline().strip()
-ri = lambda: int(ns())
-ril = lambda: list(map(int, stdin.readline().split()))
-</code></pre>
-<h2 id="print-関数を何度も呼ばない"><a class="header" href="#print-関数を何度も呼ばない">print() 関数を何度も呼ばない</a></h2>
-<p>以下は遅い</p>
-<pre><code class="language-python">for i in range(n):
-    print(solve(i))
-</code></pre>
-<p>例えば、以下のようにするとマシになる。</p>
-<pre><code class="language-python">ans = []
-for i in range(n):
-    ans.append(sole(i))
-
-print(*ans)
-</code></pre>
-<h2 id="defaultdict-を使うと便利"><a class="header" href="#defaultdict-を使うと便利">defaultdict を使うと便利</a></h2>
-<p>デフォルト値を指定できる。</p>
-<pre><code class="language-python">from collections import defaultdict
-
-dct = defaultdict(int)
-
-for x in arr:
-    dct[x] += 1
-</code></pre>
-<p><code>list</code> の場合</p>
-<pre><code class="language-python">dct = defaultdict(list)
-for x,y in arr:
-    dct[x].append(y)
-</code></pre>
-<p>初期値を変えたい場合</p>
-<pre><code class="language-python">dct = defaultdict(lambda: 10)
-</code></pre>
-<h2 id="deque-を使う"><a class="header" href="#deque-を使う">deque を使う</a></h2>
-<p><code>deque</code> を使うと高機能。
-スタック/キューとして使える。</p>
-<pre><code class="language-python">from collections import deque
-</code></pre>
-<h2 id="再帰を深くする"><a class="header" href="#再帰を深くする">再帰を深くする</a></h2>
-<p>DFS などをするときは以下を追加</p>
-<pre><code class="language-python">import sys
-sys.setrecursionlimit(10**8)
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="典型問題"><a class="header" href="#典型問題">典型問題</a></h1>
