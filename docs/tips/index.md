@@ -55,3 +55,22 @@ for x,y in arr:
 ```python
 dct = defaultdict(lambda: 10)
 ```
+
+
+## deque を使う
+
+`deque` を使うと高機能。
+スタック/キューとして使える。
+
+```python
+from collections import deque
+```
+
+## 再帰を深くする
+
+DFS などをするときは以下を追加
+
+```python
+import sys
+sys.setrecursionlimit(10**6)
+```
