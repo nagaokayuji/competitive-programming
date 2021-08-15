@@ -11,3 +11,6 @@
   - [素数](./algorithms/prime_numbers.md)
 
 - [tips](./tips/index.md)
+
+- [典型問題](./typical/index.md)
+  - [LIS](./typical/lis.md)

@@ -72,5 +72,5 @@ DFS などをするときは以下を追加
 
 ```python
 import sys
-sys.setrecursionlimit(10**6)
+sys.setrecursionlimit(10**8)
 ```
