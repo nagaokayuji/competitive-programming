@@ -14,3 +14,4 @@
 
 - [典型問題](./typical/index.md)
   - [LIS](./typical/lis.md)
+  - [転倒数](./typical/inversions.md)
