@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>転倒数 - notebook</title>
+        <title>二項係数 - notebook</title>
                 
 
         <!-- Custom HTML head -->
@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">index</a></li><li class="chapter-item expanded "><a href="../tips/index.html">tips</a></li><li class="chapter-item expanded "><a href="../data_structures/index.html">データ構造</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../data_structures/dsu.html">DSU</a></li><li class="chapter-item expanded "><a href="../data_structures/priority_queue.html">Priority Queue</a></li><li class="chapter-item expanded "><a href="../data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li></ol></li><li class="chapter-item expanded "><a href="../algorithms/index.html">アルゴリズム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithms/z_algorithm.html">Z-Algorithm</a></li><li class="chapter-item expanded "><a href="../algorithms/prime_numbers.html">素数</a></li><li class="chapter-item expanded "><a href="../algorithms/combination.html">二項係数</a></li></ol></li><li class="chapter-item expanded "><a href="../typical/index.html">典型問題</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../typical/lis.html">LIS</a></li><li class="chapter-item expanded "><a href="../typical/inversions.html" class="active">転倒数</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">index</a></li><li class="chapter-item expanded "><a href="../tips/index.html">tips</a></li><li class="chapter-item expanded "><a href="../data_structures/index.html">データ構造</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../data_structures/dsu.html">DSU</a></li><li class="chapter-item expanded "><a href="../data_structures/priority_queue.html">Priority Queue</a></li><li class="chapter-item expanded "><a href="../data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li></ol></li><li class="chapter-item expanded "><a href="../algorithms/index.html">アルゴリズム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithms/z_algorithm.html">Z-Algorithm</a></li><li class="chapter-item expanded "><a href="../algorithms/prime_numbers.html">素数</a></li><li class="chapter-item expanded "><a href="../algorithms/combination.html" class="active">二項係数</a></li></ol></li><li class="chapter-item expanded "><a href="../typical/index.html">典型問題</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../typical/lis.html">LIS</a></li><li class="chapter-item expanded "><a href="../typical/inversions.html">転倒数</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -147,68 +147,69 @@
                 <div id="content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="転倒数"><a class="header" href="#転倒数">転倒数</a></h1>
-<p>求め方が複数ある。
-どちらも計算量は<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>となる。</p>
-<ul>
-<li>BIT を用いる方法</li>
-<li>分割統治法による方法</li>
-</ul>
-<p>BIT を用いる方法の方が分かりやすいと思うが、今回は分割統治法による方法について載せる。</p>
-<h2 id="実装"><a class="header" href="#実装">実装</a></h2>
-<pre><code class="language-python">def inversions(a):
-    count = 0
-    n = len(a)
-    if n &gt;= 2:
-        b = a[0:n//2].copy()
-        c = a[n//2:n].copy()
-        count += inversions(b) + inversions(c)
+<h1 id="二項係数"><a class="header" href="#二項係数">二項係数</a></h1>
+<p>組み合わせを求める方法について述べる。</p>
+<h2 id="雑に計算したい場合"><a class="header" href="#雑に計算したい場合">雑に計算したい場合</a></h2>
+<p><code>math.comb()</code> で求められる。 
+AtCoder で使用できる。</p>
+<pre><code class="language-python">import math
+math.comb(4,2) # 6
+</code></pre>
+<h2 id="前計算後に高速に求めたい場合"><a class="header" href="#前計算後に高速に求めたい場合">前計算後に高速に求めたい場合</a></h2>
+<p>以下を参考に実装した。</p>
+<p><a href="https://drken1215.hatenablog.com/entry/2018/06/08/210000">よくやる二項係数 (nCk mod. p)、逆元 (a^-1 mod. p) の求め方</a></p>
+<p>逆元リストを用いず、<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">!</span></span></span></span> の逆元を最初に求める方式を採用した。</p>
+<p>また、重複組合せも求められるようにした。</p>
+<pre><code class="language-python">class ModComb:
+    '''
+    O(N) で初期化、O(1) でクエリ処理
+    二項係数を求める
+    '''
 
-        # b,c は sort されている。
-        # merge sort をしていく流れで count
-        ai = bi = ci = 0
-        while ai &lt; n:
-            if bi &lt; len(b) and (ci == len(c) or b[bi] &lt;= c[ci]):
-                a[ai] = b[bi]
-                bi += 1
-            else:
-                count += len(b) - bi
-                a[ai] = c[ci]
-                ci += 1
-            ai += 1
-    return count
-</code></pre>
-<h3 id="注意点"><a class="header" href="#注意点">注意点</a></h3>
-<p>渡したリストはソートされる。</p>
-<h3 id="分割"><a class="header" href="#分割">分割</a></h3>
-<p>半分に分けて再帰的に呼び出していく。</p>
-<pre><code class="language-python">        b = a[0:n//2].copy()
-        c = a[n//2:n].copy()
-        count += inversions(b) + inversions(c)
-</code></pre>
-<h3 id="統合"><a class="header" href="#統合">統合</a></h3>
-<p>マージソートの要領でマージしていく。</p>
-<p>リストBのうち、マージされていない要素の個数を足す。</p>
-<pre><code class="language-python">        ai = bi = ci = 0
-        while ai &lt; n:
-            if bi &lt; len(b) and (ci == len(c) or b[bi] &lt;= c[ci]):
-                a[ai] = b[bi]
-                bi += 1
-            else:
-                count += len(b) - bi
-                a[ai] = c[ci]
-                ci += 1
-            ai += 1
+    def __init__(self, N=10**6, MOD=10**9 + 7):
+        '''
+        最大 N まで
+        '''
+        self.MOD = MOD
+        self.N = N
+        self.factorial = [1] * (N+1)
+
+        for i in range(2, N+1):
+            self.factorial[i] = self.factorial[i-1]*i % MOD
+
+        self.inv_factorial = [1] * (N+1)
+        # N! の逆元を先に計算
+        self.inv_factorial[N] = pow(self.factorial[N], MOD-2, MOD)
+        # (N-1)! / (N!) * N = 1
+        for i in range(N, 1, -1):
+            self.inv_factorial[i-1] = self.inv_factorial[i]*i % MOD
+
+    def comb(self, n, k):
+        '''
+        二項係数 nCk
+        '''
+        if n &lt; k or n &lt; 0 or k &lt; 0:
+            return 0
+        return self.factorial[n] * self.inv_factorial[k] * self.inv_factorial[n-k] % self.MOD
+
+    def comb_multi(self, n, k):
+        '''
+        重複組合せ nHk
+        '''
+        return self.comb(n+k-1, k)
 </code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                                                    <a rel="prev" href="../typical/lis.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                                    <a rel="prev" href="../algorithms/prime_numbers.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
+                                                    <a rel="next" href="../typical/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         
                         <div style="clear: both"></div>
                     </nav>
@@ -216,10 +217,13 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                                    <a rel="prev" href="../typical/lis.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                    <a rel="prev" href="../algorithms/prime_numbers.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
+                                    <a rel="next" href="../typical/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                             </nav>
 
         </div>

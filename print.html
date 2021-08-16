@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">index</a></li><li class="chapter-item expanded "><a href="tips/index.html">tips</a></li><li class="chapter-item expanded "><a href="data_structures/index.html">データ構造</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="data_structures/dsu.html">DSU</a></li><li class="chapter-item expanded "><a href="data_structures/priority_queue.html">Priority Queue</a></li><li class="chapter-item expanded "><a href="data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li></ol></li><li class="chapter-item expanded "><a href="algorithms/index.html">アルゴリズム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algorithms/z_algorithm.html">Z-Algorithm</a></li><li class="chapter-item expanded "><a href="algorithms/prime_numbers.html">素数</a></li></ol></li><li class="chapter-item expanded "><a href="typical/index.html">典型問題</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="typical/lis.html">LIS</a></li><li class="chapter-item expanded "><a href="typical/inversions.html">転倒数</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">index</a></li><li class="chapter-item expanded "><a href="tips/index.html">tips</a></li><li class="chapter-item expanded "><a href="data_structures/index.html">データ構造</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="data_structures/dsu.html">DSU</a></li><li class="chapter-item expanded "><a href="data_structures/priority_queue.html">Priority Queue</a></li><li class="chapter-item expanded "><a href="data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li></ol></li><li class="chapter-item expanded "><a href="algorithms/index.html">アルゴリズム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algorithms/z_algorithm.html">Z-Algorithm</a></li><li class="chapter-item expanded "><a href="algorithms/prime_numbers.html">素数</a></li><li class="chapter-item expanded "><a href="algorithms/combination.html">二項係数</a></li></ol></li><li class="chapter-item expanded "><a href="typical/index.html">典型問題</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="typical/lis.html">LIS</a></li><li class="chapter-item expanded "><a href="typical/inversions.html">転倒数</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -410,13 +410,18 @@ print(-sum(pq))
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="アルゴリズム"><a class="header" href="#アルゴリズム">アルゴリズム</a></h1>
 <ul>
-<li>素数関連
+<li>素数
 <ul>
 <li>エラトステネスの篩</li>
 <li>約数列挙</li>
 </ul>
 </li>
-<li>文字列関連
+<li>数え上げ
+<ul>
+<li>二項係数</li>
+</ul>
+</li>
+<li>文字列
 <ul>
 <li>Z-algorithm</li>
 </ul>
@@ -629,6 +634,58 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
             factors.append(factor)
         return factors
 
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="二項係数"><a class="header" href="#二項係数">二項係数</a></h1>
+<p>組み合わせを求める方法について述べる。</p>
+<h2 id="雑に計算したい場合"><a class="header" href="#雑に計算したい場合">雑に計算したい場合</a></h2>
+<p><code>math.comb()</code> で求められる。 
+AtCoder で使用できる。</p>
+<pre><code class="language-python">import math
+math.comb(4,2) # 6
+</code></pre>
+<h2 id="前計算後に高速に求めたい場合"><a class="header" href="#前計算後に高速に求めたい場合">前計算後に高速に求めたい場合</a></h2>
+<p>以下を参考に実装した。</p>
+<p><a href="https://drken1215.hatenablog.com/entry/2018/06/08/210000">よくやる二項係数 (nCk mod. p)、逆元 (a^-1 mod. p) の求め方</a></p>
+<p>逆元リストを用いず、<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">!</span></span></span></span> の逆元を最初に求める方式を採用した。</p>
+<p>また、重複組合せも求められるようにした。</p>
+<pre><code class="language-python">class ModComb:
+    '''
+    O(N) で初期化、O(1) でクエリ処理
+    二項係数を求める
+    '''
+
+    def __init__(self, N=10**6, MOD=10**9 + 7):
+        '''
+        最大 N まで
+        '''
+        self.MOD = MOD
+        self.N = N
+        self.factorial = [1] * (N+1)
+
+        for i in range(2, N+1):
+            self.factorial[i] = self.factorial[i-1]*i % MOD
+
+        self.inv_factorial = [1] * (N+1)
+        # N! の逆元を先に計算
+        self.inv_factorial[N] = pow(self.factorial[N], MOD-2, MOD)
+        # (N-1)! / (N!) * N = 1
+        for i in range(N, 1, -1):
+            self.inv_factorial[i-1] = self.inv_factorial[i]*i % MOD
+
+    def comb(self, n, k):
+        '''
+        二項係数 nCk
+        '''
+        if n &lt; k or n &lt; 0 or k &lt; 0:
+            return 0
+        return self.factorial[n] * self.inv_factorial[k] * self.inv_factorial[n-k] % self.MOD
+
+    def comb_multi(self, n, k):
+        '''
+        重複組合せ nHk
+        '''
+        return self.comb(n+k-1, k)
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="典型問題"><a class="header" href="#典型問題">典型問題</a></h1>
