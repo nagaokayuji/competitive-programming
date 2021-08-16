@@ -151,33 +151,10 @@
 <h1 id="index"><a class="header" href="#index">index</a></h1>
 <p>競技プログラミングでのアルゴリズムやスニペット的なもの。</p>
 <p>コピペで使用できるようなものを目指す。</p>
-<ul>
-<li>
-<p><a href="./tips/index.html">tips</a></p>
-</li>
-<li>
-<p><a href="./data_structures/index.html">データ構造</a></p>
-<ul>
-<li><a href="./data_structures/dsu.html">DSU</a></li>
-<li><a href="./data_structures/priority_queue.html">Priority Queue</a></li>
-<li><a href="./data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li>
-</ul>
-</li>
-<li>
-<p><a href="./algorithms/index.html">アルゴリズム</a></p>
-<ul>
-<li><a href="./algorithms/z_algorithm.html">Z-Algorithm</a></li>
-<li><a href="./algorithms/prime_numbers.html">素数</a></li>
-</ul>
-</li>
-<li>
-<p><a href="./typical/index.html">典型問題</a></p>
-<ul>
-<li><a href="./typical/lis.html">LIS</a></li>
-<li><a href="./typical/inversions.html">転倒数</a></li>
-</ul>
-</li>
-</ul>
+<h2 id="a-hreftipsindexhtmltipsa"><a class="header" href="#a-hreftipsindexhtmltipsa"><a href="./tips/index.html">tips</a></a></h2>
+<h2 id="a-hrefdata_structuresindexhtmlデータ構造a"><a class="header" href="#a-hrefdata_structuresindexhtmlデータ構造a"><a href="./data_structures/index.html">データ構造</a></a></h2>
+<h2 id="a-hrefalgorithmsindexhtmlアルゴリズムa"><a class="header" href="#a-hrefalgorithmsindexhtmlアルゴリズムa"><a href="./algorithms/index.html">アルゴリズム</a></a></h2>
+<h2 id="a-hreftypicalindexhtml典型問題a"><a class="header" href="#a-hreftypicalindexhtml典型問題a"><a href="./typical/index.html">典型問題</a></a></h2>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="tips"><a class="header" href="#tips">tips</a></h1>
 <p>Python 特有の tips</p>
@@ -240,20 +217,14 @@ dp[0,0,0] = 1
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="データ構造"><a class="header" href="#データ構造">データ構造</a></h1>
+<h2 id="グラフ木"><a class="header" href="#グラフ木">グラフ、木</a></h2>
 <ul>
-<li>
-<p>Queue</p>
-<ul>
-<li>Priority Queue</li>
+<li><a href="data_structures/./dsu.html">DSU (Union Find)</a></li>
+<li><a href="data_structures/./fenwick_tree.html">Fenwick Tree (BIT)</a></li>
 </ul>
-</li>
-<li>
-<p>グラフ、木</p>
+<h2 id="queue"><a class="header" href="#queue">Queue</a></h2>
 <ul>
-<li>DSU (Union Find)</li>
-<li>Fenwick Tree (BIT)</li>
-</ul>
-</li>
+<li><a href="data_structures/./priority_queue.html">Priority Queue</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="dsu"><a class="header" href="#dsu">DSU</a></h1>
@@ -409,28 +380,23 @@ print(-sum(pq))
 <p>https://github.com/not522/ac-library-python/blob/master/atcoder/fenwicktree.py</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="アルゴリズム"><a class="header" href="#アルゴリズム">アルゴリズム</a></h1>
+<h2 id="整数"><a class="header" href="#整数">整数</a></h2>
 <ul>
-<li>整数
+<li><a href="algorithms/./euclid.html">ユークリッドの互除法</a></li>
+<li>数え上げ
 <ul>
-<li>ユークリッドの互除法</li>
+<li><a href="algorithms/./combination.html">二項係数</a></li>
 </ul>
 </li>
-<li>素数
+</ul>
+<h2 id="a-hrefalgorithmsprime_numbershtml素数a"><a class="header" href="#a-hrefalgorithmsprime_numbershtml素数a"><a href="algorithms/./prime_numbers.html">素数</a></a></h2>
 <ul>
 <li>エラトステネスの篩</li>
 <li>約数列挙</li>
 </ul>
-</li>
-<li>数え上げ
+<h2 id="文字列"><a class="header" href="#文字列">文字列</a></h2>
 <ul>
-<li>二項係数</li>
-</ul>
-</li>
-<li>文字列
-<ul>
-<li>Z-algorithm</li>
-</ul>
-</li>
+<li><a href="algorithms/./z_algorithm.html">Z-algorithm</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="z-algorithm"><a class="header" href="#z-algorithm">Z-Algorithm</a></h1>
@@ -755,8 +721,8 @@ math.gcd(a,b)
 <h1 id="典型問題"><a class="header" href="#典型問題">典型問題</a></h1>
 <p>典型問題の解法やテクニックなど</p>
 <ul>
-<li>LIS</li>
-<li>転倒数</li>
+<li><a href="typical/./lis.html">LIS</a></li>
+<li><a href="typical/./inversions.html">転倒数</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="lis"><a class="header" href="#lis">LIS</a></h1>
