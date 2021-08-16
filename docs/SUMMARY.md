@@ -11,6 +11,7 @@
 - [アルゴリズム](./algorithms/index.md)
   - [Z-Algorithm](./algorithms/z_algorithm.md)
   - [素数](./algorithms/prime_numbers.md)
+  - [二項係数](./algorithms/combination.md)
 
 - [典型問題](./typical/index.md)
   - [LIS](./typical/lis.md)
