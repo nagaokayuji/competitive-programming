@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>notebook</title>
-                <meta name="robots" content="noindex" />
+        <title>ユークリッドの互除法 - notebook</title>
                 
 
         <!-- Custom HTML head -->
@@ -15,21 +14,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-                <link rel="icon" href="favicon.svg">
-                        <link rel="shortcut icon" href="favicon.png">
-                <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-                <link rel="stylesheet" href="css/print.css" media="print">
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
         
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-                <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
         
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
         
@@ -37,7 +36,7 @@
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -83,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">index</a></li><li class="chapter-item expanded "><a href="tips/index.html">tips</a></li><li class="chapter-item expanded "><a href="data_structures/index.html">データ構造</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="data_structures/dsu.html">DSU</a></li><li class="chapter-item expanded "><a href="data_structures/priority_queue.html">Priority Queue</a></li><li class="chapter-item expanded "><a href="data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li></ol></li><li class="chapter-item expanded "><a href="algorithms/index.html">アルゴリズム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algorithms/z_algorithm.html">Z-Algorithm</a></li><li class="chapter-item expanded "><a href="algorithms/prime_numbers.html">素数</a></li><li class="chapter-item expanded "><a href="algorithms/combination.html">二項係数</a></li><li class="chapter-item expanded "><a href="algorithms/euclid.html">ユークリッドの互除法</a></li></ol></li><li class="chapter-item expanded "><a href="typical/index.html">典型問題</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="typical/lis.html">LIS</a></li><li class="chapter-item expanded "><a href="typical/inversions.html">転倒数</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">index</a></li><li class="chapter-item expanded "><a href="../tips/index.html">tips</a></li><li class="chapter-item expanded "><a href="../data_structures/index.html">データ構造</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../data_structures/dsu.html">DSU</a></li><li class="chapter-item expanded "><a href="../data_structures/priority_queue.html">Priority Queue</a></li><li class="chapter-item expanded "><a href="../data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li></ol></li><li class="chapter-item expanded "><a href="../algorithms/index.html">アルゴリズム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithms/z_algorithm.html">Z-Algorithm</a></li><li class="chapter-item expanded "><a href="../algorithms/prime_numbers.html">素数</a></li><li class="chapter-item expanded "><a href="../algorithms/combination.html">二項係数</a></li><li class="chapter-item expanded "><a href="../algorithms/euclid.html" class="active">ユークリッドの互除法</a></li></ol></li><li class="chapter-item expanded "><a href="../typical/index.html">典型問題</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../typical/lis.html">LIS</a></li><li class="chapter-item expanded "><a href="../typical/inversions.html">転倒数</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -115,7 +114,7 @@
                     <h1 class="menu-title">notebook</h1>
 
                     <div class="right-buttons">
-                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                                                                         <a href="https://github.com/nagaokayuji/competitive-programming" title="Git repository" aria-label="Git repository">
@@ -148,551 +147,6 @@
                 <div id="content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="index"><a class="header" href="#index">index</a></h1>
-<p>競技プログラミングでのアルゴリズムやスニペット的なもの。</p>
-<p>コピペで使用できるようなものを目指す。</p>
-<ul>
-<li>
-<p><a href="./tips/index.html">tips</a></p>
-</li>
-<li>
-<p><a href="./data_structures/index.html">データ構造</a></p>
-<ul>
-<li><a href="./data_structures/dsu.html">DSU</a></li>
-<li><a href="./data_structures/priority_queue.html">Priority Queue</a></li>
-<li><a href="./data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li>
-</ul>
-</li>
-<li>
-<p><a href="./algorithms/index.html">アルゴリズム</a></p>
-<ul>
-<li><a href="./algorithms/z_algorithm.html">Z-Algorithm</a></li>
-<li><a href="./algorithms/prime_numbers.html">素数</a></li>
-</ul>
-</li>
-<li>
-<p><a href="./typical/index.html">典型問題</a></p>
-<ul>
-<li><a href="./typical/lis.html">LIS</a></li>
-<li><a href="./typical/inversions.html">転倒数</a></li>
-</ul>
-</li>
-</ul>
-<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="tips"><a class="header" href="#tips">tips</a></h1>
-<p>Python 特有の tips</p>
-<h2 id="入力を高速に受け取る"><a class="header" href="#入力を高速に受け取る">入力を高速に受け取る</a></h2>
-<p><code>input()</code> で遅い場合は以下を検討</p>
-<pre><code class="language-python">import sys
-stdin = sys.stdin
- 
-rd = lambda: stdin.readline().strip()
-ri = lambda: int(ns())
-ril = lambda: list(map(int, stdin.readline().split()))
-</code></pre>
-<h2 id="print-関数を何度も呼ばない"><a class="header" href="#print-関数を何度も呼ばない">print() 関数を何度も呼ばない</a></h2>
-<p>以下は遅い</p>
-<pre><code class="language-python">for i in range(n):
-    print(solve(i))
-</code></pre>
-<p>例えば、以下のようにするとマシになる。</p>
-<pre><code class="language-python">ans = []
-for i in range(n):
-    ans.append(sole(i))
-
-print(*ans)
-</code></pre>
-<h2 id="defaultdict-を使うと便利"><a class="header" href="#defaultdict-を使うと便利">defaultdict を使うと便利</a></h2>
-<p>デフォルト値を指定できる。</p>
-<pre><code class="language-python">from collections import defaultdict
-
-dct = defaultdict(int)
-
-for x in arr:
-    dct[x] += 1
-</code></pre>
-<p><code>list</code> の場合</p>
-<pre><code class="language-python">dct = defaultdict(list)
-for x,y in arr:
-    dct[x].append(y)
-</code></pre>
-<p>初期値を変えたい場合</p>
-<pre><code class="language-python">dct = defaultdict(lambda: 10)
-</code></pre>
-<h2 id="deque-を使う"><a class="header" href="#deque-を使う">deque を使う</a></h2>
-<p><code>deque</code> を使うと高機能。
-スタック/キューとして使える。</p>
-<pre><code class="language-python">from collections import deque
-</code></pre>
-<h2 id="再帰を深くする"><a class="header" href="#再帰を深くする">再帰を深くする</a></h2>
-<p>DFS などをするときは以下を追加</p>
-<pre><code class="language-python">import sys
-sys.setrecursionlimit(10**8)
-</code></pre>
-<h2 id="リストの代わりに-dict-を使う"><a class="header" href="#リストの代わりに-dict-を使う">リストの代わりに dict を使う</a></h2>
-<p>3重配列などを宣言するのは面倒なため、
-特に defaultdict と組み合わせると実装が楽になる。</p>
-<p>Python では tuple をキーに取れることを利用して以下のように書ける。</p>
-<pre><code class="language-python">from collections import defaultdict
-
-dp = defaultdict(int)
-dp[0,0,0] = 1
-</code></pre>
-<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="データ構造"><a class="header" href="#データ構造">データ構造</a></h1>
-<ul>
-<li>
-<p>Queue</p>
-<ul>
-<li>Priority Queue</li>
-</ul>
-</li>
-<li>
-<p>グラフ、木</p>
-<ul>
-<li>DSU (Union Find)</li>
-<li>Fenwick Tree (BIT)</li>
-</ul>
-</li>
-</ul>
-<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="dsu"><a class="header" href="#dsu">DSU</a></h1>
-<p><a href="https://atcoder.github.io/ac-library/production/document_ja/dsu.html">ACL</a> の実装</p>
-<pre><code class="language-python">class DSU:
-    def __init__(self, n: int = 0):
-        self._n = n
-        self.parent_or_size = [-1] * n
-
-    def merge(self, a: int, b: int):
-        x = self.leader(a)
-        y = self.leader(b)
-
-        if x == y:
-            return x
-
-        if -self.parent_or_size[x] &lt; -self.parent_or_size[y]:
-            x, y = y, x
-
-        self.parent_or_size[x] += self.parent_or_size[y]
-        self.parent_or_size[y] = x
-        return x
-
-    def same(self, a: int, b: int):
-        return self.leader(a) == self.leader(b)
-
-    def leader(self, a: int):
-        parent = self.parent_or_size[a]
-        while parent &gt;= 0:
-            if self.parent_or_size[parent] &lt; 0:
-                return parent
-            self.parent_or_size[a], a, parent = (
-                self.parent_or_size[parent],
-                self.parent_or_size[parent],
-                self.parent_or_size[self.parent_or_size[parent]]
-            )
-
-        return a
-
-    def size(self, a: int):
-        return -self.parent_or_size[self.leader(a)]
-
-    def groups(self):
-        leader_buf = [self.leader(i) for i in range(self._n)]
-        result = [[] for _ in range(self._n)]
-        for i in range(self._n):
-            result[leader_buf[i]].append(i)
-        return list(filter(lambda r: r, result))
-</code></pre>
-<h2 id="例"><a class="header" href="#例">例</a></h2>
-<ul>
-<li><a href="https://atcoder.jp/contests/practice2/tasks/practice2_a">A - Disjoint Set Union</a></li>
-</ul>
-<pre><code class="language-python">N, Q = map(int, input().split())
-dsu = DSU(N)
-for _ in range(Q):
-    t, u, v = map(int, input().split())
-    if t == 0:
-        dsu.merge(u, v)
-    else:
-        if dsu.same(u, v):
-            print(1)
-        else:
-            print(0)
-</code></pre>
-<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="priority-queue"><a class="header" href="#priority-queue">Priority Queue</a></h1>
-<p><code>heapq</code> を使用する。 <a href="https://docs.python.org/ja/3/library/heapq.html">公式ドキュメント</a></p>
-<p>デフォルトで昇順のため Rust と逆。</p>
-<p>使用する場合は import する。</p>
-<h2 id="import"><a class="header" href="#import">import</a></h2>
-<pre><code class="language-python">from heapq import *
-</code></pre>
-<h2 id="作成"><a class="header" href="#作成">作成</a></h2>
-<p>適当なリストを heapq に変換</p>
-<pre><code class="language-python">l = [1,0,-1,3]
-heapify(l)
-</code></pre>
-<h2 id="l-から先頭を取り出す"><a class="header" href="#l-から先頭を取り出す">l から先頭を取り出す</a></h2>
-<pre><code class="language-python">heappop(l)
-</code></pre>
-<h2 id="l-に-要素を追加"><a class="header" href="#l-に-要素を追加">l に 要素を追加</a></h2>
-<pre><code class="language-python">heappush(l, 123)
-</code></pre>
-<h2 id="最大値を取り出したい場合"><a class="header" href="#最大値を取り出したい場合">最大値を取り出したい場合</a></h2>
-<p>符号を反転して突っ込むのが楽そう</p>
-<h2 id="例-1"><a class="header" href="#例-1">例</a></h2>
-<ul>
-<li><a href="https://atcoder.jp/contests/abc141/tasks/abc141_d">ABC141 D - Powerful Discount Tickets</a></li>
-</ul>
-<p>最大値取り出し</p>
-<pre><code class="language-python">from heapq import *
-
-
-N, M = map(int, input().split())
-
-A = list(map(int, input().split()))
-
-pq = []
-
-for x in A:
-    heappush(pq, -x)
-
-for _ in range(M):
-    val = -heappop(pq)
-    heappush(pq, -(val//2))
-
-print(-sum(pq))
-</code></pre>
-<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="fenwick-tree-bit"><a class="header" href="#fenwick-tree-bit">Fenwick Tree (BIT)</a></h1>
-<p>長さNのリストにおいて、</p>
-<p>1点加算（変更）、区間和取得 を <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> で行うことができる。</p>
-<p>以下の実装では <code>0-indexed</code></p>
-<h3 id="コピー用実装"><a class="header" href="#コピー用実装">コピー用実装</a></h3>
-<pre><code class="language-python">class FenwickTree:
-    '''
-    Fenwick Tree (BIT)
-    0-indexed
-    '''
-
-    def __init__(self, n: int = 0):
-        '''
-        長さnで初期化
-        '''
-        self._n = n
-        self.data = [0] * n
-
-    def add(self, p: int, x):
-        '''
-        x を加算
-        '''
-        p += 1
-        while p &lt;= self._n:
-            self.data[p - 1] += x
-            p += p &amp; -p
-
-    def sum(self, left: int, right: int):
-        '''
-        [l, r) の和を取得
-        '''
-        return self._sum(right) - self._sum(left)
-
-    def _sum(self, r: int):
-        s = 0
-        while r &gt; 0:
-            s += self.data[r - 1]
-            r -= r &amp; -r
-
-        return s
-</code></pre>
-<h3 id="参考"><a class="header" href="#参考">参考</a></h3>
-<p>https://github.com/not522/ac-library-python/blob/master/atcoder/fenwicktree.py</p>
-<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="アルゴリズム"><a class="header" href="#アルゴリズム">アルゴリズム</a></h1>
-<ul>
-<li>整数
-<ul>
-<li>ユークリッドの互除法</li>
-</ul>
-</li>
-<li>素数
-<ul>
-<li>エラトステネスの篩</li>
-<li>約数列挙</li>
-</ul>
-</li>
-<li>数え上げ
-<ul>
-<li>二項係数</li>
-</ul>
-</li>
-<li>文字列
-<ul>
-<li>Z-algorithm</li>
-</ul>
-</li>
-</ul>
-<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="z-algorithm"><a class="header" href="#z-algorithm">Z-Algorithm</a></h1>
-<h2 id="z-algorithm-とは"><a class="header" href="#z-algorithm-とは">Z-Algorithm とは？</a></h2>
-<p>文字列Sが与えられる。</p>
-<p>このとき、<code>Z[i] = S と S[i:] の共通接頭辞の長さ(Longest Common Prefix, LCP)</code> となるリスト <code>Z</code> がほしい。</p>
-<p>これを <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> で生成する。</p>
-<p>※ 入力 S の長さを N とすると、
-Z[0] = N は明らかに成立する。</p>
-<h2 id="コード"><a class="header" href="#コード">コード</a></h2>
-<pre><code class="language-python">import typing
-
-
-def z_algorithm(s: typing.Union[str, typing.List[int]]) -&gt; typing.List[int]:
-    '''
-    s: str または list
-    愚直な実装
-    O(N^2)
-    参考: https://github.com/not522/ac-library-python/blob/master/atcoder/string.py
-    '''
-    if isinstance(s, str):
-        s = [ord(c) for c in s]
-
-    n = len(s)
-    if n == 0:
-        return []
-
-    z = [0] * n
-
-    # 一番うしろまで行ったやつの始点
-    # 終点は (last + z[last]) でとれる
-    last = 0
-    for i in range(1, n):
-        last_ind = last + z[last]
-        now = 0 if last_ind &lt;= i else min(last_ind - i, z[i - last])
-
-        while i + now &lt; n and s[now] == s[i + now]:
-            now += 1
-
-        if last_ind &lt; i + now:
-            last = i
-
-        z[i] = now
-
-    z[0] = n
-
-    return z
-
-</code></pre>
-<h2 id="メモ"><a class="header" href="#メモ">メモ</a></h2>
-<ul>
-<li>基本的に左からみていく</li>
-<li>どこまで比較したかを記録</li>
-</ul>
-<h3 id="愚直な実装span-classkatexspan-classkatex-html-aria-hiddentruespan-classbasespan-classstrut-styleheight1064108emvertical-align-025emspanspan-classmord-mathnormal-stylemargin-right002778emospanspan-classmopenspanspan-classmordspan-classmord-mathnormal-stylemargin-right010903emnspanspan-classmsupsubspan-classvlist-tspan-classvlist-rspan-classvlist-styleheight08141079999999999emspan-styletop-3063emmargin-right005emspan-classpstrut-styleheight27emspanspan-classsizing-reset-size6-size3-mtightspan-classmord-mtight2spanspanspanspanspanspanspanspanspan-classmclosespanspanspanspan"><a class="header" href="#愚直な実装span-classkatexspan-classkatex-html-aria-hiddentruespan-classbasespan-classstrut-styleheight1064108emvertical-align-025emspanspan-classmord-mathnormal-stylemargin-right002778emospanspan-classmopenspanspan-classmordspan-classmord-mathnormal-stylemargin-right010903emnspanspan-classmsupsubspan-classvlist-tspan-classvlist-rspan-classvlist-styleheight08141079999999999emspan-styletop-3063emmargin-right005emspan-classpstrut-styleheight27emspanspan-classsizing-reset-size6-size3-mtightspan-classmord-mtight2spanspanspanspanspanspanspanspanspan-classmclosespanspanspanspan">愚直な実装<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></a></h3>
-<pre><code class="language-python">def z_algorithm_naive(s):
-    '''
-    s: str または list
-    愚直な実装
-    O(N^2)
-    '''
-    if isinstance(s, str):
-        s = [ord(c) for c in s]
-
-    n = len(s)
-    if n == 0:
-        return []
-
-    z = [0] * n
-    z[0] = n
-
-    for i in range(1, n):
-        now = z[i]
-        while i + now &lt; n and s[now] == s[i + now]:
-            now += 1
-        z[i] = now
-
-    return z
-</code></pre>
-<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="素数"><a class="header" href="#素数">素数</a></h1>
-<h2 id="約数列挙"><a class="header" href="#約数列挙">約数列挙</a></h2>
-<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.176665em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9266650000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span><span style="top:-2.886665em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
-c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
-c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
-c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
-s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
-c69,-144,104.5,-217.7,106.5,-221
-l0 -0
-c5.3,-9.3,12,-14,20,-14
-H400000v40H845.2724
-s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
-c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
-M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.11333499999999996em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span> で約数を列挙</p>
-<p>一応リストにして返している</p>
-<pre><code class="language-python">def divisors(N: int):
-    '''
-    約数列挙
-    O(N**0.5)
-    sort しなくて良い場合は調整する
-    '''
-    divisors = set()
-    i = 1
-    while i*i &lt;= N:
-        if N % i == 0:
-            divisors.add(i)
-            divisors.add(N//i)
-        i += 1
-    return sorted(list(divisors))
-</code></pre>
-<h2 id="素因数分解"><a class="header" href="#素因数分解">素因数分解</a></h2>
-<h3 id="試し割り法-trial-division"><a class="header" href="#試し割り法-trial-division">試し割り法 Trial division</a></h3>
-<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.176665em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9266650000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span><span style="top:-2.886665em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
-c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
-c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
-c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
-s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
-c69,-144,104.5,-217.7,106.5,-221
-l0 -0
-c5.3,-9.3,12,-14,20,-14
-H400000v40H845.2724
-s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
-c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
-M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.11333499999999996em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
-<pre><code class="language-python">class PrimeFactorize:
-    def __init__(self, N: int):
-        '''
-        N を素因数分解
-        '''
-        self.primes = []
-        n = N
-
-        # よくある高速化
-        # 偶数を落としておく
-        while n % 2 == 0:
-            n //= 2
-            self.primes.append(2)
-
-        div = 3
-        while div*div &lt;= n:
-            while n % div == 0:
-                self.primes.append(div)
-                n //= div
-            div += 2
-
-        if n != 1:
-            self.primes.append(n)
-
-    def get_counts(self):
-        '''
-        dict で返す
-        '''
-        import collections
-        return dict(collections.Counter(self.primes))
-</code></pre>
-<h3 id="エラトステネスの篩"><a class="header" href="#エラトステネスの篩">エラトステネスの篩</a></h3>
-<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> で素数判定用のリストを返す</p>
-<pre><code class="language-python">def sieve(n):
-    '''
-    エラトステネスの篩
-    O(N log log N)
-    '''
-    is_prime = [True for _ in range(n+1)]
-    is_prime[0] = False
-    is_prime[1] = False
-
-    for i in range(2, n+1):
-        if is_prime[i]:
-            j = i + i
-            while j &lt;= n:
-                is_prime[j] = False
-                j += i
-    return is_prime
-
-</code></pre>
-<h3 id="高速素因数分解"><a class="header" href="#高速素因数分解">高速素因数分解</a></h3>
-<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> で初期化</p>
-<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> で素因数分解</p>
-<pre><code class="language-python">class SmallestPrimeFactors:
-    '''
-    高速素因数分解
-    最小の素数を返す
-    O(N log N)
-    '''
-
-    def __init__(self, N: int):
-        table = [i for i in range(N+1)]
-        i = 2
-        while i*i &lt;= N:
-            # 素数の場合
-            if table[i] == i:
-                j = i
-                while j &lt;= N:
-                    if table[j] == j:
-                        table[j] = i
-                    j += i
-            i += 1
-        self._table = table
-
-    def prime_factorize(self, N: int):
-        factors = []
-        n = N
-        while n &gt; 1:
-            factor = self._table[n]
-            n //= factor
-            factors.append(factor)
-        return factors
-
-</code></pre>
-<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="二項係数"><a class="header" href="#二項係数">二項係数</a></h1>
-<p>組み合わせを求める方法について述べる。</p>
-<h2 id="雑に計算したい場合"><a class="header" href="#雑に計算したい場合">雑に計算したい場合</a></h2>
-<p><code>math.comb()</code> で求められる。 
-AtCoder で使用できる。</p>
-<pre><code class="language-python">import math
-math.comb(4,2) # 6
-</code></pre>
-<h2 id="前計算後に高速に求めたい場合"><a class="header" href="#前計算後に高速に求めたい場合">前計算後に高速に求めたい場合</a></h2>
-<p>以下を参考に実装した。</p>
-<p><a href="https://drken1215.hatenablog.com/entry/2018/06/08/210000">よくやる二項係数 (nCk mod. p)、逆元 (a^-1 mod. p) の求め方</a></p>
-<p>逆元リストを用いず、<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">!</span></span></span></span> の逆元を最初に求める方式を採用した。</p>
-<p>また、重複組合せも求められるようにした。</p>
-<pre><code class="language-python">class ModComb:
-    '''
-    O(N) で初期化、O(1) でクエリ処理
-    二項係数を求める
-    '''
-
-    def __init__(self, N=10**6, MOD=10**9 + 7):
-        '''
-        最大 N まで
-        '''
-        self.MOD = MOD
-        self.N = N
-        self.factorial = [1] * (N+1)
-
-        for i in range(2, N+1):
-            self.factorial[i] = self.factorial[i-1]*i % MOD
-
-        self.inv_factorial = [1] * (N+1)
-        # N! の逆元を先に計算
-        self.inv_factorial[N] = pow(self.factorial[N], MOD-2, MOD)
-        # (N-1)! / (N!) * N = 1
-        for i in range(N, 1, -1):
-            self.inv_factorial[i-1] = self.inv_factorial[i]*i % MOD
-
-    def comb(self, n, k):
-        '''
-        二項係数 nCk
-        '''
-        if n &lt; k or n &lt; 0 or k &lt; 0:
-            return 0
-        return self.factorial[n] * self.inv_factorial[k] * self.inv_factorial[n-k] % self.MOD
-
-    def comb_multi(self, n, k):
-        '''
-        重複組合せ nHk
-        '''
-        return self.comb(n+k-1, k)
-</code></pre>
-<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="ユークリッドの互除法"><a class="header" href="#ユークリッドの互除法">ユークリッドの互除法</a></h1>
 <p>最大公約数 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">c</span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span><span class="mclose">)</span></span></span></span> を高速に求める。</p>
 <p>自明な性質として、
@@ -728,96 +182,18 @@ math.gcd(a,b)
 <p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.00003em;vertical-align:-1.25003em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.7500000000000002em;"><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2500000000000002em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.7500000000000002em;"><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2500000000000002em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
 を利用して
 元の<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>を求めることができる。</p>
-<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="典型問題"><a class="header" href="#典型問題">典型問題</a></h1>
-<p>典型問題の解法やテクニックなど</p>
-<ul>
-<li>LIS</li>
-<li>転倒数</li>
-</ul>
-<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="lis"><a class="header" href="#lis">LIS</a></h1>
-<p>最長増加部分列を求める</p>
-<pre><code class="language-python">def lis(A):
-    '''
-    最長増加部分列(LIS)
-    '''
-    from bisect import *
-
-    INF = 10**10
-    N = len(A)
-    dp = [INF]*(N+1)
-    dp[0] = -1
-    # dp[i] := 長さが i の列で最後が dp[i] のやつ
-    for a in A:
-        ind = bisect_left(dp, a)
-        dp[ind] = min(a, dp[ind])
-
-    return max(i for i in range(N+1) if dp[i] &lt; INF)
-</code></pre>
-<p>以下のパターンもある</p>
-<pre><code class="language-python">ind = bisect(dp, a-1)
-</code></pre>
-<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="転倒数"><a class="header" href="#転倒数">転倒数</a></h1>
-<p>求め方が複数ある。
-どちらも計算量は<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>となる。</p>
-<ul>
-<li>BIT を用いる方法</li>
-<li>分割統治法による方法</li>
-</ul>
-<p>BIT を用いる方法の方が分かりやすいと思うが、今回は分割統治法による方法について載せる。</p>
-<h2 id="実装"><a class="header" href="#実装">実装</a></h2>
-<pre><code class="language-python">def inversions(a):
-    count = 0
-    n = len(a)
-    if n &gt;= 2:
-        b = a[0:n//2].copy()
-        c = a[n//2:n].copy()
-        count += inversions(b) + inversions(c)
-
-        # b,c は sort されている。
-        # merge sort をしていく流れで count
-        ai = bi = ci = 0
-        while ai &lt; n:
-            if bi &lt; len(b) and (ci == len(c) or b[bi] &lt;= c[ci]):
-                a[ai] = b[bi]
-                bi += 1
-            else:
-                count += len(b) - bi
-                a[ai] = c[ci]
-                ci += 1
-            ai += 1
-    return count
-</code></pre>
-<h3 id="注意点"><a class="header" href="#注意点">注意点</a></h3>
-<p>渡したリストはソートされる。</p>
-<h3 id="分割"><a class="header" href="#分割">分割</a></h3>
-<p>半分に分けて再帰的に呼び出していく。</p>
-<pre><code class="language-python">        b = a[0:n//2].copy()
-        c = a[n//2:n].copy()
-        count += inversions(b) + inversions(c)
-</code></pre>
-<h3 id="統合"><a class="header" href="#統合">統合</a></h3>
-<p>マージソートの要領でマージしていく。</p>
-<p>リストBのうち、マージされていない要素の個数を足す。</p>
-<pre><code class="language-python">        ai = bi = ci = 0
-        while ai &lt; n:
-            if bi &lt; len(b) and (ci == len(c) or b[bi] &lt;= c[ci]):
-                a[ai] = b[bi]
-                bi += 1
-            else:
-                count += len(b) - bi
-                a[ai] = c[ci]
-                ci += 1
-            ai += 1
-</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../algorithms/combination.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
                         
+                                                    <a rel="next" href="../typical/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         
                         <div style="clear: both"></div>
                     </nav>
@@ -825,7 +201,13 @@ math.gcd(a,b)
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../algorithms/combination.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
                 
+                                    <a rel="next" href="../typical/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                             </nav>
 
         </div>
@@ -840,27 +222,22 @@ math.gcd(a,b)
             window.playground_copyable = true;
         </script>
         
-                <script src="ace.js" type="text/javascript" charset="utf-8"></script>
-        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
-        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
-        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+                <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
         
-                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
         
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
         
-                        <script type="text/javascript">
-        window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
-        });
-        </script>
-                
+        
     </body>
 </html>
