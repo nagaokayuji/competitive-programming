@@ -9,6 +9,7 @@ title = "notebook"
 
 [output.html]
 no-section-label = true
+curly-quotes = true
 git-repository-url = "https://github.com/nagaokayuji/competitive-programming"
 
 [output.html.playground]
