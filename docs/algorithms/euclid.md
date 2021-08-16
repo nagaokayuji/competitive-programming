@@ -20,12 +20,18 @@ $a\cdot x + b\cdot y = gcd(a,b)$ となる $x,y$ を求めることができる�
 ユークリッドの互除法より、左辺は
 
 $$
-(b \% a) \cdot x_1 + a \cdot y_1
+(b \% a) \cdot x_1 + a \cdot y_1 \tag{1}
 $$
 
 とおける。
 
-このとき、両辺に$x_1$を掛けて
+一方、恒等式
+$$
+(b \% a) + (b / a) \cdot a = b
+$$
+
+両辺に$x_1$を掛けて
+
 $$
 (b \% a ) \cdot x_1 + (b/a) \cdot a \cdot x_1 = b \cdot x_1
 $$
@@ -34,9 +40,31 @@ $$
 (b \% a) \cdot x_1 = b \cdot x_1 - (b/a) \cdot a \cdot x_1
 $$
 
+これと $(1)$ より、
+$$
+\begin{aligned}
+a\cdot x + b\cdot y &=
+b \cdot x_1 - (b/a) \cdot a \cdot x_1 + a \cdot y_1  \\
+&= \{b - (b/a)\cdot a\}\cdot x_1 + a\cdot y_1
+\\
+&= a \cdot \{ y_1 - (b/a)\cdot x_1 \} + b \cdot x_1
+\end{aligned}
+$$
+
+これより、
+$$
+\left\{
+\begin{aligned}
+x &= y_1 - (b/a)\cdot x_1 \\
+y &= x_1
+\end{aligned}
+\right.
+$$
+のように$x,y$の値が求められる。
 
 
-一般に、
+また、
+一般に
 
 $$
 \left\{
