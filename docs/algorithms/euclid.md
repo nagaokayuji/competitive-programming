@@ -92,10 +92,40 @@ $$
 $$
 \left\{
 \begin{aligned}
-x_{k-1} &= y_k + (b_{k-1}/a_{k-1}) \cdot x_k \\
+x_{k-1} &= y_k - (b_{k-1}/a_{k-1}) \cdot x_k \\
 y_{k-1} &= x_k
 \end{aligned}
 \right.
 $$
 を利用して
 元の$x,y$を求めることができる。
+
+
+## 実装
+
+一応 `gcd` も返す実装とした。
+
+
+```python
+def ext_gcd(a, b):
+    '''
+    ax + by = gcd(a, b) の解
+    (x, y, gcd(a,b)) を返す
+
+    a, b が互いに素のとき gcd(a,b) = 1 より
+    x は a の逆元
+    '''
+    if a == 0:
+        return (0, 1, b)
+    else:
+        (x1, y1, gcd) = ext_gcd(b % a, a)
+        return (y1-b//a*x1, x1, gcd)
+
+```
+
+- 逆元
+```python
+inv_a = ext_gcd(a, MOD)[0]
+```
+
+※ `MOD` が 素数の場合は `pow(a, MOD-2, MOD)` で求められる
