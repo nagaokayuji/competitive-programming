@@ -1,8 +1,9 @@
 # データ構造
 
-- Queue
-  - Priority Queue
 
-- グラフ、木
-  - DSU (Union Find)
-  - Fenwick Tree (BIT)
+## グラフ、木
+  - [DSU (Union Find)](./dsu.md)
+  - [Fenwick Tree (BIT)](./fenwick_tree.md)
+
+## Queue
+  - [Priority Queue](./priority_queue.md)
