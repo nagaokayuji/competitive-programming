@@ -11,3 +11,6 @@
 
 ## 文字列
 - [Z-algorithm](./z_algorithm.md)
+
+## 他
+- [マージソート](./merge_sort.md)
