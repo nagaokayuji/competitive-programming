@@ -726,34 +726,32 @@ math.gcd(a,b)
 <p>再帰で実装する。</p>
 <p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></p>
 <h2 id="コード-1"><a class="header" href="#コード-1">コード</a></h2>
-<pre><code class="language-python">def merge(a, b):
-    aind = 0
-    bind = 0
-    na = len(a)
-    nb = len(b)
-    ret = []
-    while aind &lt; na and bind &lt; nb:
-        if a[aind] &lt;= b[bind]:
-            ret.append(a[aind])
-            aind += 1
-        else:
-            ret.append(b[bind])
-            bind += 1
-    if aind &lt; na:
-        ret += a[aind:]
-    else:
-        ret += b[bind:]
-    return ret
-
-def merge_sort(lst):
+<pre><code class="language-python">def merge_sort(lst):
     n = len(lst)
     if n &lt;= 1:
         return lst
 
-    a = lst[0:n//2]
-    b = lst[n//2:]
+    # a, b に分割
+    # 分割したa, bに対して sort
+    a = merge_sort(lst[0:n//2])
+    b = merge_sort(lst[n//2:])
 
-    return merge(merge_sort(a), merge_sort(b))
+    # マージ処理
+    index_a = index_b = 0
+    ret = []
+    while index_a &lt; len(a) and index_b &lt; len(b):
+        if a[index_a] &lt;= b[index_b]:
+            ret.append(a[index_a])
+            index_a += 1
+        else:
+            ret.append(b[index_b])
+            index_b += 1
+    # 余った要素を最後に追加
+    if index_a &lt; len(a):
+        ret += a[index_a:]
+    else:
+        ret += b[index_b:]
+    return ret
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="典型問題"><a class="header" href="#典型問題">典型問題</a></h1>
