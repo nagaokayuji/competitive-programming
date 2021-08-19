@@ -14,3 +14,12 @@ print(Ffg)
 fg = np.fft.irfft(Ffg, fft_len)
 fg = np.rint(fg)
 print(fg)
+
+lst = [1, 2, 34, 4, 6, 7, 7, 78, 12, -1]
+
+
+f = np.fft.rfft(lst)
+
+print(f)
+rv = np.fft.irfft(f)
+print(np.rint(rv))
