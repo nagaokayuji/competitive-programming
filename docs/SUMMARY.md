@@ -2,6 +2,7 @@
 - [index](./index.md)
 
 - [tips](./tips/index.md)
+  - [numba](./tips/numba.md)
 
 - [データ構造](./data_structures/index.md)
   - [DSU](./data_structures/dsu.md)
