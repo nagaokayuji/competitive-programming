@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">index</a></li><li class="chapter-item expanded "><a href="tips/index.html">tips</a></li><li class="chapter-item expanded "><a href="data_structures/index.html">データ構造</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="data_structures/dsu.html">DSU</a></li><li class="chapter-item expanded "><a href="data_structures/priority_queue.html">Priority Queue</a></li><li class="chapter-item expanded "><a href="data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li></ol></li><li class="chapter-item expanded "><a href="algorithms/index.html">アルゴリズム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algorithms/z_algorithm.html">Z-Algorithm</a></li><li class="chapter-item expanded "><a href="algorithms/prime_numbers.html">素数</a></li><li class="chapter-item expanded "><a href="algorithms/combination.html">二項係数</a></li><li class="chapter-item expanded "><a href="algorithms/euclid.html">ユークリッドの互除法</a></li><li class="chapter-item expanded "><a href="algorithms/merge_sort.html">マージソート</a></li></ol></li><li class="chapter-item expanded "><a href="typical/index.html">典型問題</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="typical/lis.html">LIS</a></li><li class="chapter-item expanded "><a href="typical/inversions.html">転倒数</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">index</a></li><li class="chapter-item expanded "><a href="tips/index.html">tips</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tips/numba.html">numba</a></li></ol></li><li class="chapter-item expanded "><a href="data_structures/index.html">データ構造</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="data_structures/dsu.html">DSU</a></li><li class="chapter-item expanded "><a href="data_structures/priority_queue.html">Priority Queue</a></li><li class="chapter-item expanded "><a href="data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li></ol></li><li class="chapter-item expanded "><a href="algorithms/index.html">アルゴリズム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algorithms/z_algorithm.html">Z-Algorithm</a></li><li class="chapter-item expanded "><a href="algorithms/prime_numbers.html">素数</a></li><li class="chapter-item expanded "><a href="algorithms/combination.html">二項係数</a></li><li class="chapter-item expanded "><a href="algorithms/euclid.html">ユークリッドの互除法</a></li><li class="chapter-item expanded "><a href="algorithms/merge_sort.html">マージソート</a></li></ol></li><li class="chapter-item expanded "><a href="typical/index.html">典型問題</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="typical/lis.html">LIS</a></li><li class="chapter-item expanded "><a href="typical/inversions.html">転倒数</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -214,6 +214,31 @@ sys.setrecursionlimit(10**8)
 
 dp = defaultdict(int)
 dp[0,0,0] = 1
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="numba"><a class="header" href="#numba">numba</a></h1>
+<h2 id="numbaとは"><a class="header" href="#numbaとは">numbaとは？</a></h2>
+<p>jit(just in time) コンパイルを行えるライブラリ。</p>
+<h2 id="基本的な使い方"><a class="header" href="#基本的な使い方">基本的な使い方</a></h2>
+<p>対象の関数に <code>@jit</code> をつける。</p>
+<p><code>@njit</code> とすると noPython モードとなり、高速化の際はこちらを使っておくと良さそう。</p>
+<pre><code class="language-python">import numba
+
+@numba.njit
+def some_function():
+    pass
+
+</code></pre>
+<h2 id="型を指定する"><a class="header" href="#型を指定する">型を指定する</a></h2>
+<p>指定したほうが速いとのこと。</p>
+<p><code>@njit('返り値の型(引数の型)')</code></p>
+<pre><code class="language-python">@njit('i8(i8[:])')
+def func(array):
+    return 合計
+</code></pre>
+<h3 id="型をimport"><a class="header" href="#型をimport">型をimport</a></h3>
+<p>文字列より安全そう。</p>
+<pre><code class="language-python">from numba import njit, f8, i8, b1, u8, c8
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="データ構造"><a class="header" href="#データ構造">データ構造</a></h1>
