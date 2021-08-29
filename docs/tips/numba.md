@@ -31,6 +31,12 @@ def func(array):
     return 合計
 ```
 
+```python
+@njit("void(i8,i8[:],i8[:])")
+def solve(N, A, B):
+    print(N
+```
+
 ### 型をimport
 
 文字列より安全そう。
