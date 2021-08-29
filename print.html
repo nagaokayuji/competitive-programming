@@ -236,6 +236,10 @@ def some_function():
 def func(array):
     return 合計
 </code></pre>
+<pre><code class="language-python">@njit(&quot;void(i8,i8[:],i8[:])&quot;)
+def solve(N, A, B):
+    print(N
+</code></pre>
 <h3 id="型をimport"><a class="header" href="#型をimport">型をimport</a></h3>
 <p>文字列より安全そう。</p>
 <pre><code class="language-python">from numba import njit, f8, i8, b1, u8, c8
