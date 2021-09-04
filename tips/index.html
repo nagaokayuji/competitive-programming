@@ -206,6 +206,14 @@ sys.setrecursionlimit(10**8)
 dp = defaultdict(int)
 dp[0,0,0] = 1
 </code></pre>
+<h2 id="リストの代わりに-array-を使う"><a class="header" href="#リストの代わりに-array-を使う">リストの代わりに array を使う</a></h2>
+<p><code>list</code> を少し速くしたい場合に便利。</p>
+<p>リストとほぼ同じように扱える。</p>
+<pre><code class="language-python">import array
+
+l = array.array(&quot;i&quot;, []) # int 型の array
+</code></pre>
+<p><a href="https://docs.python.org/ja/3/library/array.html">array --- 効率のよい数値アレイ — Python 3.9.4 ドキュメント</a></p>
 
                     </main>
 
