@@ -90,3 +90,19 @@ from collections import defaultdict
 dp = defaultdict(int)
 dp[0,0,0] = 1
 ```
+
+## リストの代わりに array を使う
+
+`list` を少し速くしたい場合に便利。
+
+リストとほぼ同じように扱える。
+
+
+```python
+import array
+
+l = array.array("i", []) # int 型の array
+```
+
+[array --- 効率のよい数値アレイ — Python 3.9.4 ドキュメント](https://docs.python.org/ja/3/library/array.html)
+
