@@ -106,3 +106,26 @@ l = array.array("i", []) # int 型の array
 
 [array --- 効率のよい数値アレイ — Python 3.9.4 ドキュメント](https://docs.python.org/ja/3/library/array.html)
 
+
+## 90度回転
+
+```python
+def rot(s):
+    '''
+    二次元配列を90度回転
+    '''
+    return list(zip(*s[::-1])
+```
+
+## 座標圧縮
+```python
+def compress(A):
+    '''
+    座標圧縮
+    compress([1, 2, 3, 123, 1, 3, 4, 61231, 1, 3]))
+     → [0, 1, 2, 4, 0, 2, 3, 5, 0, 2]
+    '''
+    xmap = {x: i for i, x in enumerate(sorted(set(A)))}
+    return list(map(lambda x: xmap[x], A))
+
+```
