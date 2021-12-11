@@ -2,16 +2,19 @@
 
 Python 特有の tips
 
-## 入力を高速に受け取る
-`input()` で遅い場合は以下を検討
-
+## テンプレート
 ```python
 import sys
-stdin = sys.stdin
- 
-rd = lambda: stdin.readline().strip()
-ri = lambda: int(ns())
-ril = lambda: list(map(int, stdin.readline().split()))
+from collections import defaultdict, Counter, deque
+from itertools import permutations, combinations, product, combinations_with_replacement, groupby, accumulate
+from math import sqrt, gcd, factorial
+# from math import isqrt, prod,comb  # python3.8用(notpypy)
+from bisect import bisect_left, bisect_right
+from heapq import heappush, heappop, heapify, heappushpop, heapreplace
+#from numba import njit, b1, i1, i4, i8, f8
+def input(): return sys.stdin.readline().rstrip()
+def mi(): return map(int, input().split())
+def li(): return list(mi())
 ```
 
 ## print() 関数を何度も呼ばない
