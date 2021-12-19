@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>tips - notebook</title>
+        <title>dijkstra - notebook</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">index</a></li><li class="chapter-item expanded "><a href="../tips/index.html" class="active">tips</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tips/numba.html">numba</a></li></ol></li><li class="chapter-item expanded "><a href="../data_structures/index.html">データ構造</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../data_structures/dsu.html">DSU</a></li><li class="chapter-item expanded "><a href="../data_structures/priority_queue.html">Priority Queue</a></li><li class="chapter-item expanded "><a href="../data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li></ol></li><li class="chapter-item expanded "><a href="../algorithms/index.html">アルゴリズム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithms/z_algorithm.html">Z-Algorithm</a></li><li class="chapter-item expanded "><a href="../algorithms/prime_numbers.html">素数</a></li><li class="chapter-item expanded "><a href="../algorithms/combination.html">二項係数</a></li><li class="chapter-item expanded "><a href="../algorithms/euclid.html">ユークリッドの互除法</a></li><li class="chapter-item expanded "><a href="../algorithms/merge_sort.html">マージソート</a></li><li class="chapter-item expanded "><a href="../algorithms/dijkstra.html">dijkstra</a></li></ol></li><li class="chapter-item expanded "><a href="../typical/index.html">典型問題</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../typical/lis.html">LIS</a></li><li class="chapter-item expanded "><a href="../typical/inversions.html">転倒数</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">index</a></li><li class="chapter-item expanded "><a href="../tips/index.html">tips</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tips/numba.html">numba</a></li></ol></li><li class="chapter-item expanded "><a href="../data_structures/index.html">データ構造</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../data_structures/dsu.html">DSU</a></li><li class="chapter-item expanded "><a href="../data_structures/priority_queue.html">Priority Queue</a></li><li class="chapter-item expanded "><a href="../data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li></ol></li><li class="chapter-item expanded "><a href="../algorithms/index.html">アルゴリズム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithms/z_algorithm.html">Z-Algorithm</a></li><li class="chapter-item expanded "><a href="../algorithms/prime_numbers.html">素数</a></li><li class="chapter-item expanded "><a href="../algorithms/combination.html">二項係数</a></li><li class="chapter-item expanded "><a href="../algorithms/euclid.html">ユークリッドの互除法</a></li><li class="chapter-item expanded "><a href="../algorithms/merge_sort.html">マージソート</a></li><li class="chapter-item expanded "><a href="../algorithms/dijkstra.html" class="active">dijkstra</a></li></ol></li><li class="chapter-item expanded "><a href="../typical/index.html">典型問題</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../typical/lis.html">LIS</a></li><li class="chapter-item expanded "><a href="../typical/inversions.html">転倒数</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -138,104 +138,36 @@
                 <div id="content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="tips"><a class="header" href="#tips">tips</a></h1>
-<p>Python 特有の tips</p>
-<h2 id="テンプレート"><a class="header" href="#テンプレート">テンプレート</a></h2>
-<pre><code class="language-python">import sys
-from collections import defaultdict, Counter, deque
-from itertools import permutations, combinations, product, combinations_with_replacement, groupby, accumulate
-from math import sqrt, gcd, factorial
-# from math import isqrt, prod,comb  # python3.8用(notpypy)
-from bisect import bisect_left, bisect_right
-from heapq import heappush, heappop, heapify, heappushpop, heapreplace
-#from numba import njit, b1, i1, i4, i8, f8
-def input(): return sys.stdin.readline().rstrip()
-def mi(): return map(int, input().split())
-def li(): return list(mi())
+<h1 id="dijkstra"><a class="header" href="#dijkstra">dijkstra</a></h1>
+<p>g: 隣接リスト
+start: 始点</p>
+<p>return: startからの最短距離リスト</p>
+<pre><code class="language-python">def dijkstra(g, start):
+    dists = [10**18] * N
+    dists[start] = 0
+    que = [(0, start)]
+    while que:
+        p = heappop(que)
+        c = p[0]
+        v = p[1]
+        if dists[v] &lt; c:
+            continue
+        for to, cost in g[v]:
+            if dists[to] &gt; dists[v] + cost:
+                dists[to] = dists[v] + cost
+                heappush(que, (dists[to], to))
+    return dists
 </code></pre>
-<h2 id="print-関数を何度も呼ばない"><a class="header" href="#print-関数を何度も呼ばない">print() 関数を何度も呼ばない</a></h2>
-<p>以下は遅い</p>
-<pre><code class="language-python">for i in range(n):
-    print(solve(i))
-</code></pre>
-<p>例えば、以下のようにするとマシになる。</p>
-<pre><code class="language-python">ans = []
-for i in range(n):
-    ans.append(sole(i))
-
-print(*ans)
-</code></pre>
-<h2 id="defaultdict-を使うと便利"><a class="header" href="#defaultdict-を使うと便利">defaultdict を使うと便利</a></h2>
-<p>デフォルト値を指定できる。</p>
-<pre><code class="language-python">from collections import defaultdict
-
-dct = defaultdict(int)
-
-for x in arr:
-    dct[x] += 1
-</code></pre>
-<p><code>list</code> の場合</p>
-<pre><code class="language-python">dct = defaultdict(list)
-for x,y in arr:
-    dct[x].append(y)
-</code></pre>
-<p>初期値を変えたい場合</p>
-<pre><code class="language-python">dct = defaultdict(lambda: 10)
-</code></pre>
-<h2 id="deque-を使う"><a class="header" href="#deque-を使う">deque を使う</a></h2>
-<p><code>deque</code> を使うと高機能。
-スタック/キューとして使える。</p>
-<pre><code class="language-python">from collections import deque
-</code></pre>
-<h2 id="再帰を深くする"><a class="header" href="#再帰を深くする">再帰を深くする</a></h2>
-<p>DFS などをするときは以下を追加</p>
-<pre><code class="language-python">import sys
-sys.setrecursionlimit(10**8)
-</code></pre>
-<h2 id="リストの代わりに-dict-を使う"><a class="header" href="#リストの代わりに-dict-を使う">リストの代わりに dict を使う</a></h2>
-<p>3重配列などを宣言するのは面倒なため、
-特に defaultdict と組み合わせると実装が楽になる。</p>
-<p>Python では tuple をキーに取れることを利用して以下のように書ける。</p>
-<pre><code class="language-python">from collections import defaultdict
-
-dp = defaultdict(int)
-dp[0,0,0] = 1
-</code></pre>
-<h2 id="リストの代わりに-array-を使う"><a class="header" href="#リストの代わりに-array-を使う">リストの代わりに array を使う</a></h2>
-<p><code>list</code> を少し速くしたい場合に便利。</p>
-<p>リストとほぼ同じように扱える。</p>
-<pre><code class="language-python">import array
-
-l = array.array(&quot;i&quot;, []) # int 型の array
-</code></pre>
-<p><a href="https://docs.python.org/ja/3/library/array.html">array — 効率のよい数値アレイ — Python 3.9.4 ドキュメント</a></p>
-<h2 id="90度回転"><a class="header" href="#90度回転">90度回転</a></h2>
-<pre><code class="language-python">def rot(s):
-    '''
-    二次元配列を90度回転
-    '''
-    return list(zip(*s[::-1])
-</code></pre>
-<h2 id="座標圧縮"><a class="header" href="#座標圧縮">座標圧縮</a></h2>
-<pre><code class="language-python">def compress(A):
-    '''
-    座標圧縮
-    compress([1, 2, 3, 123, 1, 3, 4, 61231, 1, 3]))
-     → [0, 1, 2, 4, 0, 2, 3, 5, 0, 2]
-    '''
-    xmap = {x: i for i, x in enumerate(sorted(set(A)))}
-    return list(map(lambda x: xmap[x], A))
-
-</code></pre>
+<p>参考: 蟻本 pp.96 - 97</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../algorithms/merge_sort.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                            <a rel="next" href="../tips/numba.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../typical/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -244,10 +176,10 @@ l = array.array(&quot;i&quot;, []) # int 型の array
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../algorithms/merge_sort.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    <a rel="next" href="../tips/numba.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../typical/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
