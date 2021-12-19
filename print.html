@@ -805,9 +805,14 @@ math.gcd(a,b)
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="dijkstra"><a class="header" href="#dijkstra">dijkstra</a></h1>
-<p>g: 隣接リスト
-start: 始点</p>
-<p>return: startからの最短距離リスト</p>
+<h2 id="requirements"><a class="header" href="#requirements">requirements</a></h2>
+<p><code>from heapq import heappush, heappop</code></p>
+<ul>
+<li><code>g: 隣接リスト</code></li>
+<li><code>start: 始点</code></li>
+<li><code>return: startからの最短距離リスト</code></li>
+</ul>
+<h2 id="code"><a class="header" href="#code">code</a></h2>
 <pre><code class="language-python">def dijkstra(g, start):
     dists = [10**18] * N
     dists[start] = 0
