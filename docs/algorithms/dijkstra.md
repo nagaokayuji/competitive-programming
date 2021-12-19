@@ -1,4 +1,4 @@
-# dijkstra
+# Dijkstra法
 ## requirements
 `from heapq import heappush, heappop`
 ## code

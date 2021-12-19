@@ -15,7 +15,7 @@
   - [二項係数](./algorithms/combination.md)
   - [ユークリッドの互除法](./algorithms/euclid.md)
   - [マージソート](./algorithms/merge_sort.md)
-  - [dijkstra](./algorithms/dijkstra.md)
+  - [Dijkstra法](./algorithms/dijkstra.md)
 
 - [典型問題](./typical/index.md)
   - [LIS](./typical/lis.md)
