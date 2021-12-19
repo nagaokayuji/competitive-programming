@@ -1,8 +1,10 @@
 # dijkstra
-g: 隣接リスト
-start: 始点
-
-return: startからの最短距離リスト
+## requirements
+`from heapq import heappush, heappop`
+- `g: 隣接リスト`
+- `start: 始点`
+- `return: startからの最短距離リスト`
+## code
 
 ```python
 def dijkstra(g, start):
