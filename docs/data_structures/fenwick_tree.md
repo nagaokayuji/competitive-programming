@@ -15,34 +15,33 @@ class FenwickTree:
     0-indexed
     '''
 
-    def __init__(self, n: int = 0):
+    def __init__(self, n: int = 10**6):
         '''
-        長さnで初期化
+        initialize n length
         '''
         self._n = n
         self.data = [0] * n
 
     def add(self, p: int, x):
         '''
-        x を加算
+        adds x
         '''
         p += 1
         while p <= self._n:
-            self.data[p - 1] += x
+            self.data[p-1] += x
             p += p & -p
 
     def sum(self, left: int, right: int):
         '''
-        [l, r) の和を取得
+        gets sum of [l,r)
         '''
         return self._sum(right) - self._sum(left)
 
     def _sum(self, r: int):
         s = 0
         while r > 0:
-            s += self.data[r - 1]
+            s += self.data[r-1]
             r -= r & -r
-
         return s
 ```
 
