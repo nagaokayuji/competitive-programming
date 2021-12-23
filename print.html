@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">index</a></li><li class="chapter-item expanded "><a href="tips/index.html">tips</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tips/numba.html">numba</a></li></ol></li><li class="chapter-item expanded "><a href="data_structures/index.html">データ構造</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="data_structures/dsu.html">DSU</a></li><li class="chapter-item expanded "><a href="data_structures/priority_queue.html">Priority Queue</a></li><li class="chapter-item expanded "><a href="data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li></ol></li><li class="chapter-item expanded "><a href="algorithms/index.html">アルゴリズム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algorithms/z_algorithm.html">Z-Algorithm</a></li><li class="chapter-item expanded "><a href="algorithms/prime_numbers.html">素数</a></li><li class="chapter-item expanded "><a href="algorithms/combination.html">二項係数</a></li><li class="chapter-item expanded "><a href="algorithms/euclid.html">ユークリッドの互除法</a></li><li class="chapter-item expanded "><a href="algorithms/merge_sort.html">マージソート</a></li><li class="chapter-item expanded "><a href="algorithms/dijkstra.html">Dijkstra法</a></li></ol></li><li class="chapter-item expanded "><a href="typical/index.html">典型問題</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="typical/lis.html">LIS</a></li><li class="chapter-item expanded "><a href="typical/inversions.html">転倒数</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">index</a></li><li class="chapter-item expanded "><a href="tips/index.html">tips</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tips/numba.html">numba</a></li></ol></li><li class="chapter-item expanded "><a href="data_structures/index.html">データ構造</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="data_structures/dsu.html">DSU</a></li><li class="chapter-item expanded "><a href="data_structures/priority_queue.html">Priority Queue</a></li><li class="chapter-item expanded "><a href="data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li></ol></li><li class="chapter-item expanded "><a href="algorithms/index.html">アルゴリズム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algorithms/z_algorithm.html">Z-Algorithm</a></li><li class="chapter-item expanded "><a href="algorithms/prime_numbers.html">素数</a></li><li class="chapter-item expanded "><a href="algorithms/combination.html">二項係数</a></li><li class="chapter-item expanded "><a href="algorithms/euclid.html">ユークリッドの互除法</a></li><li class="chapter-item expanded "><a href="algorithms/merge_sort.html">マージソート</a></li><li class="chapter-item expanded "><a href="algorithms/dijkstra.html">Dijkstra法</a></li><li class="chapter-item expanded "><a href="algorithms/rolling_hash.html">Rolling Hash</a></li></ol></li><li class="chapter-item expanded "><a href="typical/index.html">典型問題</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="typical/lis.html">LIS</a></li><li class="chapter-item expanded "><a href="typical/inversions.html">転倒数</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -829,6 +829,34 @@ math.gcd(a,b)
     return dists
 </code></pre>
 <p>参考: 蟻本 pp.96 - 97</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="rolling-hash"><a class="header" href="#rolling-hash">Rolling Hash</a></h1>
+<pre><code class="language-python">class RollingHash():
+    def __init__(self, s: str, base=10007, mod=2**61 - 1):
+        n = len(s)
+        self.mod = mod
+        self.hash = hash = [0]*(n+1)
+        self.pw = pw = [1]*(len(s)+1)
+
+        for i in range(n):
+            pw[i+1] = pw[i] * base % mod
+
+        for i in range(n):
+            hash[i+1] = (hash[i] * base + ord(s[i])) % mod
+
+    def get(self, l: int, r: int):
+        '''
+        get hash of [l,r)  (0-indexed)
+        '''
+        return (self.hash[r] - self.hash[l] * self.pw[r-l]) % self.mod
+</code></pre>
+<h3 id="example"><a class="header" href="#example">example</a></h3>
+<pre><code class="language-python">rh = RollingHash(&quot;hogehogestring&quot;)
+assert(rh.get(0, 1) == rh.get(4, 5))
+assert(rh.get(0, 2) == rh.get(4, 6))
+assert(rh.get(0, 3) == rh.get(4, 7))
+assert(rh.get(0, 4) == rh.get(4, 8))
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="典型問題-1"><a class="header" href="#典型問題-1">典型問題</a></h1>
 <p>典型問題の解法やテクニックなど</p>
