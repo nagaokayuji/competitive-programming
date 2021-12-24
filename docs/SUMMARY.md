@@ -17,6 +17,7 @@
   - [マージソート](./algorithms/merge_sort.md)
   - [Dijkstra法](./algorithms/dijkstra.md)
   - [Rolling Hash](./algorithms/rolling_hash.md)
+  - [SCC](./algorithms/scc.md)
 
 - [典型問題](./typical/index.md)
   - [LIS](./typical/lis.md)
