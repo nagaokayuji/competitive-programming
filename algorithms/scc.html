@@ -3,34 +3,33 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title></title>
-        <base href="/">
+        <title>SCC - notebook</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
     </head>
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -76,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">index</a></li><li class="chapter-item expanded "><a href="tips/index.html">tips</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tips/numba.html">numba</a></li></ol></li><li class="chapter-item expanded "><a href="data_structures/index.html">データ構造</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="data_structures/dsu.html">DSU</a></li><li class="chapter-item expanded "><a href="data_structures/priority_queue.html">Priority Queue</a></li><li class="chapter-item expanded "><a href="data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li></ol></li><li class="chapter-item expanded "><a href="algorithms/index.html">アルゴリズム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algorithms/z_algorithm.html">Z-Algorithm</a></li><li class="chapter-item expanded "><a href="algorithms/prime_numbers.html">素数</a></li><li class="chapter-item expanded "><a href="algorithms/combination.html">二項係数</a></li><li class="chapter-item expanded "><a href="algorithms/euclid.html">ユークリッドの互除法</a></li><li class="chapter-item expanded "><a href="algorithms/merge_sort.html">マージソート</a></li><li class="chapter-item expanded "><a href="algorithms/dijkstra.html">Dijkstra法</a></li><li class="chapter-item expanded "><a href="algorithms/rolling_hash.html">Rolling Hash</a></li><li class="chapter-item expanded "><a href="algorithms/scc.html">SCC</a></li></ol></li><li class="chapter-item expanded "><a href="typical/index.html">典型問題</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="typical/lis.html">LIS</a></li><li class="chapter-item expanded "><a href="typical/inversions.html">転倒数</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">index</a></li><li class="chapter-item expanded "><a href="../tips/index.html">tips</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tips/numba.html">numba</a></li></ol></li><li class="chapter-item expanded "><a href="../data_structures/index.html">データ構造</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../data_structures/dsu.html">DSU</a></li><li class="chapter-item expanded "><a href="../data_structures/priority_queue.html">Priority Queue</a></li><li class="chapter-item expanded "><a href="../data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li></ol></li><li class="chapter-item expanded "><a href="../algorithms/index.html">アルゴリズム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithms/z_algorithm.html">Z-Algorithm</a></li><li class="chapter-item expanded "><a href="../algorithms/prime_numbers.html">素数</a></li><li class="chapter-item expanded "><a href="../algorithms/combination.html">二項係数</a></li><li class="chapter-item expanded "><a href="../algorithms/euclid.html">ユークリッドの互除法</a></li><li class="chapter-item expanded "><a href="../algorithms/merge_sort.html">マージソート</a></li><li class="chapter-item expanded "><a href="../algorithms/dijkstra.html">Dijkstra法</a></li><li class="chapter-item expanded "><a href="../algorithms/rolling_hash.html">Rolling Hash</a></li><li class="chapter-item expanded "><a href="../algorithms/scc.html" class="active">SCC</a></li></ol></li><li class="chapter-item expanded "><a href="../typical/index.html">典型問題</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../typical/lis.html">LIS</a></li><li class="chapter-item expanded "><a href="../typical/inversions.html">転倒数</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -108,7 +107,7 @@
                     <h1 class="menu-title">notebook</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                         <a href="https://github.com/nagaokayuji/competitive-programming" title="Git repository" aria-label="Git repository">
@@ -138,19 +137,89 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="document-not-found-404"><a class="header" href="#document-not-found-404">Document not found (404)</a></h1>
-<p>This URL is invalid, sorry. Please use the navigation bar or search to continue.</p>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="scc"><a class="header" href="#scc">SCC</a></h1>
+<pre><code class="language-python">
+sys.setrecursionlimit(1111111)
+
+
+class SCC:
+    def __init__(self, n: int):
+        ''' n: num of nodes'''
+        self.n = n
+        self.g = [[] for _ in range(n)]
+        self.rg = [[] for _ in range(n)]
+
+    def from_graph(self, g: List[List[int]]):
+        self.n = n = len(g)
+        self.g = g.copy()
+        self.rg = [[] for _ in range(n)]
+        for v in range(n):
+            for to in g[v]:
+                self.rg[to].append(v)
+
+    def add_edge(self, _from: int, to: int):
+        self.g[_from].append(to)
+        self.rg[to].append(_from)
+
+    def scc(self):
+        n = self.n
+        group = [None] * n  # トポロジカル順序
+        used = [False] * n
+        order = []  # 帰りがけ順の並び
+
+        def dfs(v: int):
+            used[v] = True
+            for nx in self.g[v]:
+                if not used[nx]:
+                    dfs(nx)
+            order.append(v)
+
+        def rdfs(v: int, group_label: int):
+            used[v] = True
+            group[v] = group_label
+            for nx in self.rg[v]:
+                if not used[nx]:
+                    rdfs(nx, group_label)
+
+        for v in range(n):
+            if not used[v]:
+                dfs(v)
+
+        used = [False] * n
+        group_label = 0
+
+        for i in range(n-1, -1, -1):
+            if not used[order[i]]:
+                rdfs(order[i], group_label)
+                group_label += 1
+
+        return group_label, group
+
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../algorithms/rolling_hash.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../typical/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../algorithms/rolling_hash.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../typical/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
@@ -161,17 +230,17 @@
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
-        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
-        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
-        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
     </body>
