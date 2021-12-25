@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Dijkstra法 - notebook</title>
+        <title>Segment Tree - notebook</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">index</a></li><li class="chapter-item expanded "><a href="../tips/index.html">tips</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tips/numba.html">numba</a></li></ol></li><li class="chapter-item expanded "><a href="../data_structures/index.html">データ構造</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../data_structures/dsu.html">DSU</a></li><li class="chapter-item expanded "><a href="../data_structures/priority_queue.html">Priority Queue</a></li><li class="chapter-item expanded "><a href="../data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li><li class="chapter-item expanded "><a href="../data_structures/segment_tree.html">Segment Tree</a></li></ol></li><li class="chapter-item expanded "><a href="../algorithms/index.html">アルゴリズム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithms/z_algorithm.html">Z-Algorithm</a></li><li class="chapter-item expanded "><a href="../algorithms/prime_numbers.html">素数</a></li><li class="chapter-item expanded "><a href="../algorithms/combination.html">二項係数</a></li><li class="chapter-item expanded "><a href="../algorithms/euclid.html">ユークリッドの互除法</a></li><li class="chapter-item expanded "><a href="../algorithms/merge_sort.html">マージソート</a></li><li class="chapter-item expanded "><a href="../algorithms/dijkstra.html" class="active">Dijkstra法</a></li><li class="chapter-item expanded "><a href="../algorithms/rolling_hash.html">Rolling Hash</a></li><li class="chapter-item expanded "><a href="../algorithms/scc.html">SCC</a></li></ol></li><li class="chapter-item expanded "><a href="../typical/index.html">典型問題</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../typical/lis.html">LIS</a></li><li class="chapter-item expanded "><a href="../typical/inversions.html">転倒数</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">index</a></li><li class="chapter-item expanded "><a href="../tips/index.html">tips</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tips/numba.html">numba</a></li></ol></li><li class="chapter-item expanded "><a href="../data_structures/index.html">データ構造</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../data_structures/dsu.html">DSU</a></li><li class="chapter-item expanded "><a href="../data_structures/priority_queue.html">Priority Queue</a></li><li class="chapter-item expanded "><a href="../data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li><li class="chapter-item expanded "><a href="../data_structures/segment_tree.html" class="active">Segment Tree</a></li></ol></li><li class="chapter-item expanded "><a href="../algorithms/index.html">アルゴリズム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algorithms/z_algorithm.html">Z-Algorithm</a></li><li class="chapter-item expanded "><a href="../algorithms/prime_numbers.html">素数</a></li><li class="chapter-item expanded "><a href="../algorithms/combination.html">二項係数</a></li><li class="chapter-item expanded "><a href="../algorithms/euclid.html">ユークリッドの互除法</a></li><li class="chapter-item expanded "><a href="../algorithms/merge_sort.html">マージソート</a></li><li class="chapter-item expanded "><a href="../algorithms/dijkstra.html">Dijkstra法</a></li><li class="chapter-item expanded "><a href="../algorithms/rolling_hash.html">Rolling Hash</a></li><li class="chapter-item expanded "><a href="../algorithms/scc.html">SCC</a></li></ol></li><li class="chapter-item expanded "><a href="../typical/index.html">典型問題</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../typical/lis.html">LIS</a></li><li class="chapter-item expanded "><a href="../typical/inversions.html">転倒数</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -138,41 +138,77 @@
                 <div id="content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="dijkstra法"><a class="header" href="#dijkstra法">Dijkstra法</a></h1>
-<h2 id="requirements"><a class="header" href="#requirements">requirements</a></h2>
-<p><code>from heapq import heappush, heappop</code></p>
+<h1 id="segment-tree"><a class="header" href="#segment-tree">Segment Tree</a></h1>
 <h2 id="code"><a class="header" href="#code">code</a></h2>
-<ul>
-<li><code>g: 隣接リスト</code></li>
-<li><code>start: 始点</code></li>
-<li><code>return: startからの最短距離リスト</code></li>
-</ul>
-<pre><code class="language-python">def dijkstra(g, start):
-    dists = [10**18] * N
-    dists[start] = 0
-    que = [(0, start)]
-    while que:
-        p = heappop(que)
-        c = p[0]
-        v = p[1]
-        if dists[v] &lt; c:
-            continue
-        for to, cost in g[v]:
-            if dists[to] &gt; dists[v] + cost:
-                dists[to] = dists[v] + cost
-                heappush(que, (dists[to], to))
-    return dists
+<pre><code class="language-python">class SegmentTree:
+    def __init__(self, n: int, initial: any, op):
+        m = 1
+        while m &lt;= (n+1):
+            m *= 2
+
+        self.m = m
+        self.array = [initial] * (2*m)
+        self.op = op
+        self.initial = initial
+
+    def update(self, index: int, val: any):
+        pos = self.m + index
+        self.array[pos] = val  # update
+        while pos &gt; 1:  # update forward root
+            pos &gt;&gt;= 1
+            self.array[pos] = self.op(self.array[pos*2], self.array[pos*2+1])
+
+    def add(self, index: int, val: any):
+        self.update(index, self.array[self.m+index]+val)
+
+    def get(self, l: int, r: int):
+        '''
+        get value of [l,r)
+        '''
+        assert(l &lt; r)
+        ret = self.initial
+        l += self.m
+        r += self.m
+        while l &lt; r:
+            if l % 2 == 1:
+                ret = self.op(ret, self.array[l])
+                l += 1
+            l //= 2
+            if r % 2 == 1:
+                ret = self.op(ret, self.array[r-1])
+                r -= 1
+            r //= 2
+        return ret
 </code></pre>
-<p>参考: 蟻本 pp.96 - 97</p>
+<h2 id="example"><a class="header" href="#example">example</a></h2>
+<ul>
+<li>range sum query</li>
+</ul>
+<pre><code class="language-python">
+def op(a, b):
+    return a+b
+
+
+seg = SegmentTree(N, 0, op)
+for i, x in enumerate(a):
+    seg.update(i, x)
+
+for _ in range(Q):
+    t, a, b = mi()
+    if t == 0:
+        seg.add(a, b)
+    else:
+        print(seg.get(a, b))
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../algorithms/merge_sort.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../data_structures/fenwick_tree.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                            <a rel="next" href="../algorithms/rolling_hash.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../algorithms/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -181,10 +217,10 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../algorithms/merge_sort.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../data_structures/fenwick_tree.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    <a rel="next" href="../algorithms/rolling_hash.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../algorithms/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
