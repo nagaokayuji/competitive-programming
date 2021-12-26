@@ -100,7 +100,7 @@ class LazySegTree:
         for i in range(self._size - 1, 0, -1):
             self._update(i)
 
-    def _ceil_pow2(self, n):
+    def _ceil_pow2(n: int):
         x = 0
         while (1 << x) < n:
             x += 1
