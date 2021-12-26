@@ -465,14 +465,14 @@ print(-sum(pq))
         l += self.m
         r += self.m
         while l &lt; r:
-            if l % 2 == 1:
+            if l &amp; 1:  # その要素を使う
                 ret = self.op(ret, self.array[l])
                 l += 1
-            l //= 2
-            if r % 2 == 1:
+            l &gt;&gt;= 1
+            if r &amp; 1:
                 ret = self.op(ret, self.array[r-1])
                 r -= 1
-            r //= 2
+            r &gt;&gt;= 1
         return ret
 </code></pre>
 <h2 id="example"><a class="header" href="#example">example</a></h2>
