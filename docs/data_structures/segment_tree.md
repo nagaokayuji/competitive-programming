@@ -3,7 +3,12 @@
 ## code
 ```python
 class SegmentTree:
-    def __init__(self, n: int, initial: any, op):
+    import typing
+
+    def __init__(self,
+                 n: int,
+                 initial: any,
+                 op: typing.Callable[[typing.Any, typing.Any], typing.Any]):
         m = 1
         while m <= (n+1):
             m *= 2
@@ -47,19 +52,18 @@ class SegmentTree:
 - range sum query
 
 ```python
+seg = SegmentTree(4, 0, lambda a, b: a+b)
+seg.update(0, 1)
+seg.update(1, 2)
+seg.update(2, 3)
+seg.update(3, 4)
+seg.add(1, 4)
+for l in range(4):
+    for r in range(l, 4):
+        sum = 0
+        for v in range(l, r+1):
+            sum += seg.get(v, v+1)
+        assert sum == seg.get(l, r+1)
 
-def op(a, b):
-    return a+b
-
-
-seg = SegmentTree(N, 0, op)
-for i, x in enumerate(a):
-    seg.update(i, x)
-
-for _ in range(Q):
-    t, a, b = mi()
-    if t == 0:
-        seg.add(a, b)
-    else:
-        print(seg.get(a, b))
+pprint(seg.array)
 ```
