@@ -37,14 +37,14 @@ class SegmentTree:
         l += self.m
         r += self.m
         while l < r:
-            if l % 2 == 1:
+            if l & 1:  # その要素を使う
                 ret = self.op(ret, self.array[l])
                 l += 1
-            l //= 2
-            if r % 2 == 1:
+            l >>= 1
+            if r & 1:
                 ret = self.op(ret, self.array[r-1])
                 r -= 1
-            r //= 2
+            r >>= 1
         return ret
 ```
 
