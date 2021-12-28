@@ -20,6 +20,8 @@ class SegmentTree:
 
     def update(self, index: int, val: any):
         pos = self.m + index
+        if self.array[index] == val:
+            return
         self.array[pos] = val  # update
         while pos > 1:  # update forward root
             pos >>= 1
@@ -46,6 +48,9 @@ class SegmentTree:
                 r -= 1
             r >>= 1
         return ret
+
+    def get_one(self, pos: int):
+        return self.array[self.m+pos]
 ```
 
 ## example
