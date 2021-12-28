@@ -448,6 +448,8 @@ print(-sum(pq))
 
     def update(self, index: int, val: any):
         pos = self.m + index
+        if self.array[index] == val:
+            return
         self.array[pos] = val  # update
         while pos &gt; 1:  # update forward root
             pos &gt;&gt;= 1
@@ -474,6 +476,9 @@ print(-sum(pq))
                 r -= 1
             r &gt;&gt;= 1
         return ret
+
+    def get_one(self, pos: int):
+        return self.array[self.m+pos]
 </code></pre>
 <h2 id="example"><a class="header" href="#example">example</a></h2>
 <ul>
