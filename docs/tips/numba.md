@@ -26,13 +26,13 @@ def some_function():
 `@njit('返り値の型(引数の型)')`
 
 ```python
-@njit('i8(i8[:])')
+@njit('i8(i8[:])', cache=True)
 def func(array):
     return 合計
 ```
 
 ```python
-@njit("void(i8,i8[:],i8[:])")
+@njit("void(i8,i8[:],i8[:])", cache=True)
 def solve(N, A, B):
     print(N
 ```
