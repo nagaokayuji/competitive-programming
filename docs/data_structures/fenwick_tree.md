@@ -10,31 +10,17 @@
 
 ```python
 class FenwickTree:
-    '''
-    Fenwick Tree (BIT)
-    0-indexed
-    '''
-
     def __init__(self, n: int = 10**6):
-        '''
-        initialize n length
-        '''
         self._n = n
         self.data = [0] * n
 
     def add(self, p: int, x):
-        '''
-        adds x
-        '''
         p += 1
         while p <= self._n:
             self.data[p-1] += x
             p += p & -p
 
     def sum(self, left: int, right: int):
-        '''
-        gets sum of [l,r)
-        '''
         return self._sum(right) - self._sum(left)
 
     def _sum(self, r: int):
@@ -44,7 +30,3 @@ class FenwickTree:
             r -= r & -r
         return s
 ```
-
-
-### 参考
-https://github.com/not522/ac-library-python/blob/master/atcoder/fenwicktree.py
