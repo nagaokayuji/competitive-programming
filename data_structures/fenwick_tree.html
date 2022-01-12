@@ -144,31 +144,17 @@
 <p>以下の実装では <code>0-indexed</code></p>
 <h3 id="コピー用実装"><a class="header" href="#コピー用実装">コピー用実装</a></h3>
 <pre><code class="language-python">class FenwickTree:
-    '''
-    Fenwick Tree (BIT)
-    0-indexed
-    '''
-
     def __init__(self, n: int = 10**6):
-        '''
-        initialize n length
-        '''
         self._n = n
         self.data = [0] * n
 
     def add(self, p: int, x):
-        '''
-        adds x
-        '''
         p += 1
         while p &lt;= self._n:
             self.data[p-1] += x
             p += p &amp; -p
 
     def sum(self, left: int, right: int):
-        '''
-        gets sum of [l,r)
-        '''
         return self._sum(right) - self._sum(left)
 
     def _sum(self, r: int):
@@ -178,8 +164,6 @@
             r -= r &amp; -r
         return s
 </code></pre>
-<h3 id="参考"><a class="header" href="#参考">参考</a></h3>
-<p>https://github.com/not522/ac-library-python/blob/master/atcoder/fenwicktree.py</p>
 
                     </main>
 
