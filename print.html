@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">index</a></li><li class="chapter-item expanded "><a href="tips/index.html">tips</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tips/numba.html">numba</a></li></ol></li><li class="chapter-item expanded "><a href="data_structures/index.html">データ構造</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="data_structures/dsu.html">DSU</a></li><li class="chapter-item expanded "><a href="data_structures/priority_queue.html">Priority Queue</a></li><li class="chapter-item expanded "><a href="data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li><li class="chapter-item expanded "><a href="data_structures/segment_tree.html">Segment Tree</a></li></ol></li><li class="chapter-item expanded "><a href="algorithms/index.html">アルゴリズム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algorithms/z_algorithm.html">Z-Algorithm</a></li><li class="chapter-item expanded "><a href="algorithms/prime_numbers.html">素数</a></li><li class="chapter-item expanded "><a href="algorithms/combination.html">二項係数</a></li><li class="chapter-item expanded "><a href="algorithms/euclid.html">ユークリッドの互除法</a></li><li class="chapter-item expanded "><a href="algorithms/merge_sort.html">マージソート</a></li><li class="chapter-item expanded "><a href="algorithms/dijkstra.html">Dijkstra法</a></li><li class="chapter-item expanded "><a href="algorithms/rolling_hash.html">Rolling Hash</a></li><li class="chapter-item expanded "><a href="algorithms/scc.html">SCC</a></li></ol></li><li class="chapter-item expanded "><a href="typical/index.html">典型問題</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="typical/lis.html">LIS</a></li><li class="chapter-item expanded "><a href="typical/inversions.html">転倒数</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">index</a></li><li class="chapter-item expanded "><a href="tips/index.html">tips</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tips/numba.html">numba</a></li></ol></li><li class="chapter-item expanded "><a href="data_structures/index.html">データ構造</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="data_structures/dsu.html">DSU</a></li><li class="chapter-item expanded "><a href="data_structures/priority_queue.html">Priority Queue</a></li><li class="chapter-item expanded "><a href="data_structures/fenwick_tree.html">Fenwick Tree (BIT)</a></li><li class="chapter-item expanded "><a href="data_structures/segment_tree.html">Segment Tree</a></li></ol></li><li class="chapter-item expanded "><a href="algorithms/index.html">アルゴリズム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algorithms/z_algorithm.html">Z-Algorithm</a></li><li class="chapter-item expanded "><a href="algorithms/prime_numbers.html">素数</a></li><li class="chapter-item expanded "><a href="algorithms/combination.html">二項係数</a></li><li class="chapter-item expanded "><a href="algorithms/euclid.html">ユークリッドの互除法</a></li><li class="chapter-item expanded "><a href="algorithms/merge_sort.html">マージソート</a></li><li class="chapter-item expanded "><a href="algorithms/dijkstra.html">Dijkstra法</a></li><li class="chapter-item expanded "><a href="algorithms/rolling_hash.html">Rolling Hash</a></li><li class="chapter-item expanded "><a href="algorithms/scc.html">SCC</a></li><li class="chapter-item expanded "><a href="algorithms/compress.html">座標圧縮</a></li></ol></li><li class="chapter-item expanded "><a href="typical/index.html">典型問題</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="typical/lis.html">LIS</a></li><li class="chapter-item expanded "><a href="typical/inversions.html">転倒数</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -1177,6 +1177,18 @@ class SCC:
 
         return group_label, group
 
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="座標圧縮-1"><a class="header" href="#座標圧縮-1">座標圧縮</a></h1>
+<h2 id="一次元リスト"><a class="header" href="#一次元リスト">一次元リスト</a></h2>
+<p>あまり早くない</p>
+<pre><code class="language-python">def compress(A):
+    d = {v: i for i, v in enumerate(sorted(set(A)))}
+    return list(map(lambda x: d[x], A))
+</code></pre>
+<h3 id="example-2"><a class="header" href="#example-2">example</a></h3>
+<pre><code class="language-python">A = [-123, 23, 0, 1000, 56]
+print(compress(A))  # [0, 2, 1, 4, 3]
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="典型問題-1"><a class="header" href="#典型問題-1">典型問題</a></h1>
