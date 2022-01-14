@@ -930,20 +930,8 @@ AtCoder で使用できる。</p>
 math.comb(4,2) # 6
 </code></pre>
 <h2 id="前計算後に高速に求めたい場合"><a class="header" href="#前計算後に高速に求めたい場合">前計算後に高速に求めたい場合</a></h2>
-<p>以下を参考に実装した。</p>
-<p><a href="https://drken1215.hatenablog.com/entry/2018/06/08/210000">よくやる二項係数 (nCk mod. p)、逆元 (a^-1 mod. p) の求め方</a></p>
-<p>逆元リストを用いず、<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">!</span></span></span></span> の逆元を最初に求める方式を採用した。</p>
-<p>また、重複組合せも求められるようにした。</p>
 <pre><code class="language-python">class ModComb:
-    '''
-    O(N) で初期化、O(1) でクエリ処理
-    二項係数を求める
-    '''
-
     def __init__(self, N=10**6, MOD=10**9 + 7):
-        '''
-        最大 N まで
-        '''
         self.MOD = MOD
         self.N = N
         self.factorial = [1] * (N+1)
@@ -959,17 +947,11 @@ math.comb(4,2) # 6
             self.inv_factorial[i-1] = self.inv_factorial[i]*i % MOD
 
     def comb(self, n, k):
-        '''
-        二項係数 nCk
-        '''
         if n &lt; k or n &lt; 0 or k &lt; 0:
             return 0
         return (self.factorial[n] * self.inv_factorial[k] % self.MOD) * self.inv_factorial[n-k] % self.MOD
 
     def comb_multi(self, n, k):
-        '''
-        重複組合せ nHk
-        '''
         return self.comb(n+k-1, k)
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
