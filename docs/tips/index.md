@@ -119,16 +119,3 @@ def rot(s):
     '''
     return list(zip(*s[::-1])
 ```
-
-## 座標圧縮
-```python
-def compress(A):
-    '''
-    座標圧縮
-    compress([1, 2, 3, 123, 1, 3, 4, 61231, 1, 3]))
-     → [0, 1, 2, 4, 0, 2, 3, 5, 0, 2]
-    '''
-    xmap = {x: i for i, x in enumerate(sorted(set(A)))}
-    return list(map(lambda x: xmap[x], A))
-
-```
