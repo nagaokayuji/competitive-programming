@@ -39,3 +39,22 @@ class ModComb:
     def comb_multi(self, n, k):
         return self.comb(n+k-1, k)
 ```
+
+## C++
+`mint` : acl
+
+```C++
+// const int MX = 1e5;
+mint fact[MX + 1];
+mint ifact[MX + 1];
+void init() {
+    fact[0] = fact[1] = 1;
+    FOR(x, 2, MX + 1) fact[x] = fact[x - 1] * x;
+    ifact[0] = ifact[1] = 1;
+    ifact[MX] = fact[MX].inv();
+    for (int x = MX - 1; x >= 2; x--) {
+        ifact[x] = ifact[x + 1] * (x + 1);
+    }
+}
+mint comb(int n, int k) { return fact[n] * ifact[k] * ifact[n - k]; }
+```
