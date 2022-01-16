@@ -943,6 +943,22 @@ math.comb(4,2) # 6
     def comb_multi(self, n, k):
         return self.comb(n+k-1, k)
 </code></pre>
+<h2 id="c"><a class="header" href="#c">C++</a></h2>
+<p><code>mint</code> : acl</p>
+<pre><code class="language-C++">// const int MX = 1e5;
+mint fact[MX + 1];
+mint ifact[MX + 1];
+void init() {
+    fact[0] = fact[1] = 1;
+    FOR(x, 2, MX + 1) fact[x] = fact[x - 1] * x;
+    ifact[0] = ifact[1] = 1;
+    ifact[MX] = fact[MX].inv();
+    for (int x = MX - 1; x &gt;= 2; x--) {
+        ifact[x] = ifact[x + 1] * (x + 1);
+    }
+}
+mint comb(int n, int k) { return fact[n] * ifact[k] * ifact[n - k]; }
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="ユークリッドの互除法"><a class="header" href="#ユークリッドの互除法">ユークリッドの互除法</a></h1>
 <p>最大公約数 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">c</span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span><span class="mclose">)</span></span></span></span> を高速に求める。</p>
