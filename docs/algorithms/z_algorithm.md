@@ -18,12 +18,6 @@ import typing
 
 
 def z_algorithm(s: typing.Union[str, typing.List[int]]) -> typing.List[int]:
-    '''
-    s: str または list
-    愚直な実装
-    O(N^2)
-    参考: https://github.com/not522/ac-library-python/blob/master/atcoder/string.py
-    '''
     if isinstance(s, str):
         s = [ord(c) for c in s]
 
@@ -32,9 +26,6 @@ def z_algorithm(s: typing.Union[str, typing.List[int]]) -> typing.List[int]:
         return []
 
     z = [0] * n
-
-    # 一番うしろまで行ったやつの始点
-    # 終点は (last + z[last]) でとれる
     last = 0
     for i in range(1, n):
         last_ind = last + z[last]
@@ -49,9 +40,7 @@ def z_algorithm(s: typing.Union[str, typing.List[int]]) -> typing.List[int]:
         z[i] = now
 
     z[0] = n
-
-    return z
-
+   return z
 ```
 
 
